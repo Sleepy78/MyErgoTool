@@ -25,7 +25,8 @@
         <activity
             android:name=".Cat2Activity"
             android:launchMode="singleTask" />
-        <activity android:name=".Cat3Activity"></activity>
+        <activity android:name=".Cat3Activity" />
+        <activity android:name=".DynamicTry"></activity>
     </application>
 
 </manifest>

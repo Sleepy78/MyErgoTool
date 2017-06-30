@@ -72,6 +72,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void onClickDynamicTry(View view) {
+        Intent intent = new Intent(MainActivity.this, DynamicTry.class);
+        startActivity(intent);
+    }
+
     public void onClickBtnStart(View view) {
         String header;
 

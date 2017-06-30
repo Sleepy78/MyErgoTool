@@ -7,6 +7,8 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -19,6 +21,7 @@ public class LieuxActivity extends AppCompatActivity {
     private DataOutput dataoutput;
     private DataLieux datalieux;
     private DataCategory datacategory;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
