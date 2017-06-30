@@ -13,7 +13,7 @@ import android.widget.ToggleButton;
 
 public class Cat2Activity extends AppCompatActivity {
     private ToggleButton btnElem1,btnElem2,btnElem3,btnElem4,btnElem5;
-    private Button btnC2versConf,btnC2versC1,btnC2versC3;
+    private Button btnC2versConf,btnC2versC1,btnC2versC2,btnC2versC3;
     private EditText textElem1,textElem2,textElem3,textElem4,textElem5;
     private TextView titlecat2;
     private DataOutput dataoutput;
@@ -105,6 +105,7 @@ public class Cat2Activity extends AppCompatActivity {
 
         btnC2versConf = (Button)findViewById(R.id.btnC2versConf);
         btnC2versC1 = (Button)findViewById(R.id.btnC2versC1);
+        btnC2versC2 = (Button)findViewById(R.id.btnC2versC2);
         btnC2versC3 = (Button)findViewById(R.id.btnC2versC3);
 
     }
@@ -142,6 +143,7 @@ public class Cat2Activity extends AppCompatActivity {
         titlecat2.setText(datacategory.getTextCat2());
 
         btnC2versC1.setText(datacategory.getTextCat1());
+        btnC2versC2.setText(datacategory.getTextCat2());
         btnC2versC3.setText(datacategory.getTextCat3());
 
         if(dataoutput.isRunning()){

@@ -14,7 +14,7 @@ import android.widget.ToggleButton;
 public class Cat3Activity extends AppCompatActivity {
 
     private ToggleButton btnElem1,btnElem2,btnElem3,btnElem4,btnElem5;
-    private Button btnC3versConf,btnC3versC1,btnC3versC2;
+    private Button btnC3versConf,btnC3versC1,btnC3versC2,btnC3versC3;
     private EditText textElem1,textElem2,textElem3,textElem4,textElem5;
     private TextView titlecat3;
     private DataOutput dataoutput;
@@ -106,6 +106,7 @@ public class Cat3Activity extends AppCompatActivity {
         btnC3versConf = (Button)findViewById(R.id.btnC3versConf);
         btnC3versC1 = (Button)findViewById(R.id.btnC3versC1);
         btnC3versC2 = (Button)findViewById(R.id.btnC3versC2);
+        btnC3versC3 = (Button)findViewById(R.id.btnC3versC3);
 
     }
 
@@ -143,6 +144,7 @@ public class Cat3Activity extends AppCompatActivity {
 
         btnC3versC1.setText(datacategory.getTextCat1());
         btnC3versC2.setText(datacategory.getTextCat2());
+        btnC3versC3.setText(datacategory.getTextCat3());
 
         if(dataoutput.isRunning()){
             disableEditTextModification(textElem1);
