@@ -7,8 +7,6 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -101,7 +99,7 @@ public class LieuxActivity extends AppCompatActivity {
         textL3 = (EditText)findViewById(R.id.etElem3);
         textL4 = (EditText)findViewById(R.id.etElem4);
         textL5 = (EditText)findViewById(R.id.etElem5);
-        titlecat1 = (TextView)findViewById(R.id.titleCat2);
+        titlecat1 = (TextView)findViewById(R.id.titleCat1);
 
         btnC1versConf = (Button)findViewById(R.id.btnC1versConf);
         btnC1versC1 = (Button)findViewById(R.id.btnC1versC1);
