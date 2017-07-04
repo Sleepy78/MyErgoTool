@@ -42,9 +42,9 @@ public class MainActivity extends AppCompatActivity {
         DataOutput doutput = new DataOutput();
 
         DataCategory.getInstance().initCategory();
-        DataLieux.getInstance().initDataLieux();
-        DataCatDeux.getInstance().initDataCatDeux();
-        DataCatTrois.getInstance().initDataCatTrois();
+        DataLieux.getInstance().initDataLieuxHint();
+        DataCatDeux.getInstance().initDataCatDeuxHint();
+        DataCatTrois.getInstance().initDataCatTroisHint();
         DataOutput.getInstance().initDataOutput();
         //Toast.makeText(getApplicationContext(), String.valueOf(dataoutput.getFullFile().isEmpty()), Toast.LENGTH_SHORT).show();
 

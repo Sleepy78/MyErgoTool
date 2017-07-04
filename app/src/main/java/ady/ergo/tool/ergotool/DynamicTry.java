@@ -22,7 +22,7 @@ public class DynamicTry extends AppCompatActivity {
     private ArrayList<EditText> edittexts,edittexts2;
     private ArrayList<RelativeLayout.LayoutParams> params;
     private ArrayList<LinearLayout> ll2;
-
+    private Categories categories;
     private LinearLayout ll;
 
     @Override
@@ -31,7 +31,8 @@ public class DynamicTry extends AppCompatActivity {
         setContentView(R.layout.activity_dynamic_try);
 
         //initObjects();
-        initObjects2();
+        //initObjects2();
+        initObjects3();
     }
     public View.OnClickListener listener = new View.OnClickListener() {
 
@@ -43,6 +44,11 @@ public class DynamicTry extends AppCompatActivity {
 
         }
     };
+
+    private void initObjects3() {
+        categories = new Categories(this);
+
+    }
 
     private void initObjects2() {
         ll = (LinearLayout)findViewById(R.id.linearLayout);
@@ -113,7 +119,7 @@ public class DynamicTry extends AppCompatActivity {
     }
 
     private void initObjects() {
-        rl = (RelativeLayout)findViewById(R.id.relativeLayout);
+        //rl = (RelativeLayout)findViewById(R.id.relativeLayout);
 
         buttons = new ArrayList<Button>();
         togglebuttons = new ArrayList<ToggleButton>();

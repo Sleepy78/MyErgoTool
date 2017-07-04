@@ -132,11 +132,11 @@ public class LieuxActivity extends AppCompatActivity {
         btnL3.setChecked(datalieux.getBtnL3());
         btnL4.setChecked(datalieux.getBtnL4());
         btnL5.setChecked(datalieux.getBtnL5());
-        textL1.setText(datalieux.getTextL1());
-        textL2.setText(datalieux.getTextL2());
-        textL3.setText(datalieux.getTextL3());
-        textL4.setText(datalieux.getTextL4());
-        textL5.setText(datalieux.getTextL5());
+        textL1.setHint(datalieux.getHintElem1());
+        textL2.setHint(datalieux.getHintElem2());
+        textL3.setHint(datalieux.getHintElem3());
+        textL4.setHint(datalieux.getHintElem4());
+        textL5.setHint(datalieux.getHintElem5());
 
         titlecat1.setText(datacategory.getTextCat1());
 

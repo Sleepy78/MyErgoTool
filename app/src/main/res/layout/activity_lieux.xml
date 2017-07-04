@@ -10,7 +10,7 @@
     <ToggleButton
         android:id="@+id/btnElem4"
         android:layout_width="100dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
@@ -21,7 +21,7 @@
     <ToggleButton
         android:id="@+id/btnElem5"
         android:layout_width="100dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
@@ -32,7 +32,7 @@
     <ToggleButton
         android:id="@+id/btnElem3"
         android:layout_width="100dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
@@ -43,7 +43,7 @@
     <ToggleButton
         android:id="@+id/btnElem2"
         android:layout_width="100dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
@@ -54,7 +54,7 @@
     <ToggleButton
         android:id="@+id/btnElem1"
         android:layout_width="100dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
@@ -81,14 +81,12 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="L1"
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/btnElem1"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+        app:layout_constraintBottom_toBottomOf="@+id/btnElem1" />
 
     <EditText
         android:id="@+id/etElem2"
@@ -98,14 +96,12 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="L2"
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/btnElem1"
-        app:layout_constraintTop_toBottomOf="@+id/etElem1" />
+        app:layout_constraintBottom_toBottomOf="@+id/btnElem2" />
 
     <EditText
         android:id="@+id/etElem3"
@@ -115,14 +111,12 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="L3"
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/btnElem1"
-        app:layout_constraintTop_toBottomOf="@+id/etElem2" />
+        app:layout_constraintBottom_toBottomOf="@+id/btnElem3" />
 
     <EditText
         android:id="@+id/etElem4"
@@ -132,14 +126,12 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="L4"
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/btnElem1"
-        app:layout_constraintTop_toBottomOf="@+id/etElem3" />
+        app:layout_constraintBottom_toBottomOf="@+id/btnElem4" />
 
     <EditText
         android:id="@+id/etElem5"
@@ -149,14 +141,12 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="L5"
         app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/btnElem1"
-        app:layout_constraintTop_toBottomOf="@+id/etElem4" />
+        app:layout_constraintBottom_toBottomOf="@+id/btnElem5" />
 
     <Button
         android:id="@+id/btnC1versConf"

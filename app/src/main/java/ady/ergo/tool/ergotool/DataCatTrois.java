@@ -11,6 +11,11 @@ public class DataCatTrois {
     private String textElem3;
     private String textElem4;
     private String textElem5;
+    private String hintElem1;
+    private String hintElem2;
+    private String hintElem3;
+    private String hintElem4;
+    private String hintElem5;
 
     public boolean getBtnElem1() {return btnElem1;}
     public boolean getBtnElem2() {return btnElem2;}
@@ -22,6 +27,11 @@ public class DataCatTrois {
     public String getTextElem3() {return textElem3;}
     public String getTextElem4() {return textElem4;}
     public String getTextElem5() {return textElem5;}
+    public String getHintElem1() {return hintElem1;}
+    public String getHintElem2() {return hintElem2;}
+    public String getHintElem3() {return hintElem3;}
+    public String getHintElem4() {return hintElem4;}
+    public String getHintElem5() {return hintElem5;}
 
     public void setBtnElem1(boolean state) {this.btnElem1 = state;}
     public void setBtnElem2(boolean state) {this.btnElem2 = state;}
@@ -37,12 +47,12 @@ public class DataCatTrois {
     private static final DataCatTrois holder = new DataCatTrois();
     public static DataCatTrois getInstance() {return holder;}
 
-    public void initDataCatTrois(){
-        textElem1 = "Elem1Cat3";
-        textElem2 = "Elem2Cat3";
-        textElem3 = "Elem3Cat3";
-        textElem4 = "Elem4Cat3";
-        textElem5 = "Elem5Cat3";
+    public void initDataCatTroisHint(){
+        hintElem1 = "Elem1Cat3";
+        hintElem2 = "Elem2Cat3";
+        hintElem3 = "Elem3Cat3";
+        hintElem4 = "Elem4Cat3";
+        hintElem5 = "Elem5Cat3";
     }
 }
 

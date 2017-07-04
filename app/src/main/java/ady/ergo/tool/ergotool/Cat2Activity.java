@@ -134,11 +134,11 @@ public class Cat2Activity extends AppCompatActivity {
         btnElem3.setChecked(datacatdeux.getBtnElem3());
         btnElem4.setChecked(datacatdeux.getBtnElem4());
         btnElem5.setChecked(datacatdeux.getBtnElem5());
-        textElem1.setText(datacatdeux.getTextElem1());
-        textElem2.setText(datacatdeux.getTextElem2());
-        textElem3.setText(datacatdeux.getTextElem3());
-        textElem4.setText(datacatdeux.getTextElem4());
-        textElem5.setText(datacatdeux.getTextElem5());
+        textElem1.setHint(datacatdeux.getHintElem1());
+        textElem2.setHint(datacatdeux.getHintElem2());
+        textElem3.setHint(datacatdeux.getHintElem3());
+        textElem4.setHint(datacatdeux.getHintElem4());
+        textElem5.setHint(datacatdeux.getHintElem5());
 
         titlecat2.setText(datacategory.getTextCat2());
 

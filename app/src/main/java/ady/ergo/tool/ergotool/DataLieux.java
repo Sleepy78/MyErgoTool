@@ -11,6 +11,11 @@ public class DataLieux {
     private String textL3;
     private String textL4;
     private String textL5;
+    private String hintElem1;
+    private String hintElem2;
+    private String hintElem3;
+    private String hintElem4;
+    private String hintElem5;
 
     public boolean getBtnL1() {return btnL1;}
     public boolean getBtnL2() {return btnL2;}
@@ -22,6 +27,11 @@ public class DataLieux {
     public String getTextL3() {return textL3;}
     public String getTextL4() {return textL4;}
     public String getTextL5() {return textL5;}
+    public String getHintElem1() {return hintElem1;}
+    public String getHintElem2() {return hintElem2;}
+    public String getHintElem3() {return hintElem3;}
+    public String getHintElem4() {return hintElem4;}
+    public String getHintElem5() {return hintElem5;}
 
     public void setBtnL1(boolean state) {this.btnL1 = state;}
     public void setBtnL2(boolean state) {this.btnL2 = state;}
@@ -37,11 +47,11 @@ public class DataLieux {
     private static final DataLieux holder = new DataLieux();
     public static DataLieux getInstance() {return holder;}
 
-    public void initDataLieux(){
-        textL1 = "Elem1Cat1";
-        textL2 = "Elem2Cat1";
-        textL3 = "Elem3Cat1";
-        textL4 = "Elem4Cat1";
-        textL5 = "Elem5Cat1";
+    public void initDataLieuxHint(){
+        hintElem1 = "Elem1Cat1";
+        hintElem2 = "Elem2Cat1";
+        hintElem3 = "Elem3Cat1";
+        hintElem4 = "Elem4Cat1";
+        hintElem5 = "Elem5Cat1";
     }
 }

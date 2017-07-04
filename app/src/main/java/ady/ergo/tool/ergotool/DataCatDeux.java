@@ -11,6 +11,11 @@ public class DataCatDeux {
     private String textElem3;
     private String textElem4;
     private String textElem5;
+    private String hintElem1;
+    private String hintElem2;
+    private String hintElem3;
+    private String hintElem4;
+    private String hintElem5;
 
     public boolean getBtnElem1() {return btnElem1;}
     public boolean getBtnElem2() {return btnElem2;}
@@ -22,6 +27,11 @@ public class DataCatDeux {
     public String getTextElem3() {return textElem3;}
     public String getTextElem4() {return textElem4;}
     public String getTextElem5() {return textElem5;}
+    public String getHintElem1() {return hintElem1;}
+    public String getHintElem2() {return hintElem2;}
+    public String getHintElem3() {return hintElem3;}
+    public String getHintElem4() {return hintElem4;}
+    public String getHintElem5() {return hintElem5;}
 
     public void setBtnElem1(boolean state) {this.btnElem1 = state;}
     public void setBtnElem2(boolean state) {this.btnElem2 = state;}
@@ -37,11 +47,11 @@ public class DataCatDeux {
     private static final DataCatDeux holder = new DataCatDeux();
     public static DataCatDeux getInstance() {return holder;}
 
-    public void initDataCatDeux(){
-        textElem1 = "Elem1Cat2";
-        textElem2 = "Elem2Cat2";
-        textElem3 = "Elem3Cat2";
-        textElem4 = "Elem4Cat2";
-        textElem5 = "Elem5Cat2";
+    public void initDataCatDeuxHint(){
+        hintElem1 = "Elem1Cat2";
+        hintElem2 = "Elem2Cat2";
+        hintElem3 = "Elem3Cat2";
+        hintElem4 = "Elem4Cat2";
+        hintElem5 = "Elem5Cat2";
     }
 }
