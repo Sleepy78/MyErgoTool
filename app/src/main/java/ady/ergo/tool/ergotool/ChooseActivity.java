@@ -21,7 +21,7 @@ public class ChooseActivity extends AppCompatActivity {
     private Button btnCat1,btnCat2,btnCat3;
     private Button btnEditCat1,btnEditCat2,btnEditCat3;
     private DataOutput dataoutput;
-    private DataLieux datalieux;
+    private DataCatUn datacatun;
     private DataCatDeux datacatdeux;
     private DataCatTrois datacattrois;
     private DataCategory datacategory;
@@ -39,20 +39,23 @@ public class ChooseActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         dataoutput = DataOutput.getInstance();
-        datalieux = DataLieux.getInstance();
+        datacatun = DataCatUn.getInstance();
         datacatdeux = DataCatDeux.getInstance();
         datacattrois = DataCatTrois.getInstance();
         datacategory = DataCategory.getInstance();
+
         setStopColor();
         loadBtnText();
         loadTVCat();
-        setEditBtnActivation();
+        setEditBtnActivation(); //hide edit button if running
+
     }
 
     @Override
     public void onPause() {
         super.onPause();
         saveBtnText();
+
     }
     private void setEditBtnActivation() {
         if(dataoutput.isRunning()){
@@ -209,7 +212,7 @@ public class ChooseActivity extends AppCompatActivity {
     }
 
     private void loadTVCat(){
-        tvCat1.setText(datacategory.getTextTVCat1(datalieux));
+        tvCat1.setText(datacategory.getTextTVCat1(datacatun));
         tvCat2.setText(datacategory.getTextTVCat2(datacatdeux));
         tvCat3.setText(datacategory.getTextTVCat3(datacattrois));
     }

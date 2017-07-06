@@ -21,13 +21,13 @@
             android:launchMode="singleTask" />
         <activity
             android:name=".LieuxActivity"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"/>
         <activity
             android:name=".Cat2Activity"
-            android:launchMode="singleTask" />
+            android:launchMode="singleTask"/>
         <activity
             android:name=".Cat3Activity"
-            android:launchMode="singleTask"/>
+            android:launchMode="singleTask" />
         <activity android:name=".DynamicTry"/>
     </application>
 

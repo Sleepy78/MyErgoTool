@@ -12,12 +12,14 @@ import android.widget.Toast;
 import android.widget.ToggleButton;
 
 public class LieuxActivity extends AppCompatActivity {
-    private ToggleButton btnL1,btnL2,btnL3,btnL4,btnL5;
+    private ToggleButton btnElem1, btnElem2, btnElem3, btnElem4, btnElem5;
     private Button btnC1versConf,btnC1versC1,btnC1versC2,btnC1versC3;
-    private EditText textL1,textL2,textL3,textL4,textL5;
-    private TextView titlecat1;
+    private EditText textElem1, textElem2, textElem3, textElem4, textElem5;
+    private TextView titlecat1,tvActiveCat1Elem,tvActiveCat2Elem,tvActiveCat3Elem;
     private DataOutput dataoutput;
-    private DataLieux datalieux;
+    private DataCatUn datacatun;
+    private DataCatDeux datacatdeux;
+    private DataCatTrois datacattrois;
     private DataCategory datacategory;
 
     @Override
@@ -26,19 +28,19 @@ public class LieuxActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lieux);
         initObjects();
 
-        btnL1.setOnClickListener(new View.OnClickListener() {
+        btnElem1.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {onBtnAction();}
         });
-        btnL2.setOnClickListener(new View.OnClickListener() {
+        btnElem2.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {onBtnAction();}
         });
-        btnL3.setOnClickListener(new View.OnClickListener() {
+        btnElem3.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {onBtnAction();}
         });
-        btnL4.setOnClickListener(new View.OnClickListener() {
+        btnElem4.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {onBtnAction();}
         });
-        btnL5.setOnClickListener(new View.OnClickListener() {
+        btnElem5.setOnClickListener(new View.OnClickListener() {
             @Override public void onClick(View v) {onBtnAction();}
         });
 
@@ -47,8 +49,10 @@ public class LieuxActivity extends AppCompatActivity {
     @Override
     public void onPause() {
         super.onPause();
+
         saveBtnState();
         saveEditTextValue();
+
         finish();
     }
 
@@ -56,9 +60,14 @@ public class LieuxActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         dataoutput = DataOutput.getInstance();
-        datalieux = DataLieux.getInstance();
+        datacatun = DataCatUn.getInstance();
+        datacatdeux = DataCatDeux.getInstance();
+        datacattrois = DataCatTrois.getInstance();
         datacategory = DataCategory.getInstance();
+
         loadState();
+        loadTVActiveCat();
+        setElementActivation(); //display element if it has to
     }
     private void onBtnAction() {
         saveBtnState();
@@ -89,16 +98,16 @@ public class LieuxActivity extends AppCompatActivity {
     }
 
     private void initObjects() {
-        btnL1 = (ToggleButton)findViewById(R.id.btnElem1);
-        btnL2 = (ToggleButton)findViewById(R.id.btnElem2);
-        btnL3 = (ToggleButton)findViewById(R.id.btnElem3);
-        btnL4 = (ToggleButton)findViewById(R.id.btnElem4);
-        btnL5 = (ToggleButton)findViewById(R.id.btnElem5);
-        textL1 = (EditText)findViewById(R.id.etElem1);
-        textL2 = (EditText)findViewById(R.id.etElem2);
-        textL3 = (EditText)findViewById(R.id.etElem3);
-        textL4 = (EditText)findViewById(R.id.etElem4);
-        textL5 = (EditText)findViewById(R.id.etElem5);
+        btnElem1 = (ToggleButton)findViewById(R.id.btnElem1);
+        btnElem2 = (ToggleButton)findViewById(R.id.btnElem2);
+        btnElem3 = (ToggleButton)findViewById(R.id.btnElem3);
+        btnElem4 = (ToggleButton)findViewById(R.id.btnElem4);
+        btnElem5 = (ToggleButton)findViewById(R.id.btnElem5);
+        textElem1 = (EditText)findViewById(R.id.etElem1);
+        textElem2 = (EditText)findViewById(R.id.etElem2);
+        textElem3 = (EditText)findViewById(R.id.etElem3);
+        textElem4 = (EditText)findViewById(R.id.etElem4);
+        textElem5 = (EditText)findViewById(R.id.etElem5);
         titlecat1 = (TextView)findViewById(R.id.titleCat1);
 
         btnC1versConf = (Button)findViewById(R.id.btnC1versConf);
@@ -106,35 +115,44 @@ public class LieuxActivity extends AppCompatActivity {
         btnC1versC2 = (Button)findViewById(R.id.btnC1versC2);
         btnC1versC3 = (Button)findViewById(R.id.btnC1versC3);
 
+        tvActiveCat1Elem = (TextView)findViewById(R.id.tvActiveCat1Elem);
+        tvActiveCat2Elem = (TextView)findViewById(R.id.tvActiveCat2Elem);
+        tvActiveCat3Elem = (TextView)findViewById(R.id.tvActiveCat3Elem);
     }
 
     private void saveBtnState() {
         //save btn state
-        datalieux.setBtnL1(btnL1.isChecked());
-        datalieux.setBtnL2(btnL2.isChecked());
-        datalieux.setBtnL3(btnL3.isChecked());
-        datalieux.setBtnL4(btnL4.isChecked());
-        datalieux.setBtnL5(btnL5.isChecked());
+        datacatun.setBtnElem1(btnElem1.isChecked());
+        datacatun.setBtnElem2(btnElem2.isChecked());
+        datacatun.setBtnElem3(btnElem3.isChecked());
+        datacatun.setBtnElem4(btnElem4.isChecked());
+        datacatun.setBtnElem5(btnElem5.isChecked());
     }
     private void saveEditTextValue() {
         //Save text state
-        datalieux.setTextL1(textL1.getText().toString());
-        datalieux.setTextL2(textL2.getText().toString());
-        datalieux.setTextL3(textL3.getText().toString());
-        datalieux.setTextL4(textL4.getText().toString());
-        datalieux.setTextL5(textL5.getText().toString());
+        datacatun.setTextElem1(textElem1.getText().toString());
+        datacatun.setTextElem2(textElem2.getText().toString());
+        datacatun.setTextElem3(textElem3.getText().toString());
+        datacatun.setTextElem4(textElem4.getText().toString());
+        datacatun.setTextElem5(textElem5.getText().toString());
     }
     private void loadState() {
-        btnL1.setChecked(datalieux.getBtnL1());
-        btnL2.setChecked(datalieux.getBtnL2());
-        btnL3.setChecked(datalieux.getBtnL3());
-        btnL4.setChecked(datalieux.getBtnL4());
-        btnL5.setChecked(datalieux.getBtnL5());
-        textL1.setHint(datalieux.getHintElem1());
-        textL2.setHint(datalieux.getHintElem2());
-        textL3.setHint(datalieux.getHintElem3());
-        textL4.setHint(datalieux.getHintElem4());
-        textL5.setHint(datalieux.getHintElem5());
+        btnElem1.setChecked(datacatun.getBtnElem1());
+        btnElem2.setChecked(datacatun.getBtnElem2());
+        btnElem3.setChecked(datacatun.getBtnElem3());
+        btnElem4.setChecked(datacatun.getBtnElem4());
+        btnElem5.setChecked(datacatun.getBtnElem5());
+        textElem1.setHint(datacatun.getHintElem1());
+        textElem2.setHint(datacatun.getHintElem2());
+        textElem3.setHint(datacatun.getHintElem3());
+        textElem4.setHint(datacatun.getHintElem4());
+        textElem5.setHint(datacatun.getHintElem5());
+
+        textElem1.setText(datacatun.getTextElem1());
+        textElem2.setText(datacatun.getTextElem2());
+        textElem3.setText(datacatun.getTextElem3());
+        textElem4.setText(datacatun.getTextElem4());
+        textElem5.setText(datacatun.getTextElem5());
 
         titlecat1.setText(datacategory.getTextCat1());
 
@@ -143,27 +161,60 @@ public class LieuxActivity extends AppCompatActivity {
         btnC1versC3.setText(datacategory.getTextCat3());
 
         if(dataoutput.isRunning()){
-            disableEditTextModification(textL1);
-            disableEditTextModification(textL2);
-            disableEditTextModification(textL3);
-            disableEditTextModification(textL4);
-            disableEditTextModification(textL5);
+            disableEditTextModification(textElem1);
+            disableEditTextModification(textElem2);
+            disableEditTextModification(textElem3);
+            disableEditTextModification(textElem4);
+            disableEditTextModification(textElem5);
         }else{
-            enableEditTextModification(textL1);
-            enableEditTextModification(textL2);
-            enableEditTextModification(textL3);
-            enableEditTextModification(textL4);
-            enableEditTextModification(textL5);
+            enableEditTextModification(textElem1);
+            enableEditTextModification(textElem2);
+            enableEditTextModification(textElem3);
+            enableEditTextModification(textElem4);
+            enableEditTextModification(textElem5);
         }
     }
 
-    private void enableEditTextModification(EditText editText){
-            editText.setInputType(InputType.TYPE_CLASS_TEXT);
-            editText.setFocusable(true);
-    }
-    private void disableEditTextModification(EditText editText){
-            editText.setInputType(InputType.TYPE_NULL);
-            editText.setFocusable(false);
+    private void loadTVActiveCat(){
+        tvActiveCat1Elem.setText((datacategory.getTextTVCat1(datacatun)).replace("   ",", "));
+        tvActiveCat2Elem.setText((datacategory.getTextTVCat2(datacatdeux)).replace("   ",", "));
+        tvActiveCat3Elem.setText((datacategory.getTextTVCat3(datacattrois)).replace("   ",", "));
     }
 
+    private void enableEditTextModification(EditText editText){
+        editText.setInputType(InputType.TYPE_CLASS_TEXT);
+        editText.setFocusable(true);
+    }
+    private void disableEditTextModification(EditText editText){
+        editText.setInputType(InputType.TYPE_NULL);
+        editText.setFocusable(false);
+    }
+
+    private void setElementActivation() {
+        if(dataoutput.isRunning()){
+            setDisplay(textElem1, btnElem1);
+            setDisplay(textElem2, btnElem2);
+            setDisplay(textElem3, btnElem3);
+            setDisplay(textElem4, btnElem4);
+            setDisplay(textElem5, btnElem5);
+        }else{
+            forceVisible(textElem1, btnElem1);
+            forceVisible(textElem2, btnElem2);
+            forceVisible(textElem3, btnElem3);
+            forceVisible(textElem4, btnElem4);
+            forceVisible(textElem5, btnElem5);
+        }
+    }
+
+    private void setDisplay(EditText et, ToggleButton tbtn){
+        if("".equals(et.getText().toString())){
+            et.setVisibility(View.GONE);
+            tbtn.setVisibility(View.GONE);
+        }
+    }
+
+    private void forceVisible(EditText et, ToggleButton tbtn){
+        et.setVisibility(View.VISIBLE);
+        tbtn.setVisibility(View.VISIBLE);
+    }
 }

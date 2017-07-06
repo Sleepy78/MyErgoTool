@@ -20,7 +20,7 @@ import static ady.ergo.tool.ergotool.R.layout.activity_main;
 
 public class MainActivity extends AppCompatActivity {
     private DataOutput dataoutput;
-    private DataLieux datalieux;
+    private DataCatUn datacatun;
     private DataCatDeux datacatdeux;
     private DataCatTrois datacattrois;
     private DataCategory datacategory;
@@ -31,16 +31,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(activity_main);
-        DataLieux dlieux = new DataLieux();
+        DataCatUn dlieux = new DataCatUn();
         DataCatDeux dcatdeux = new DataCatDeux();
         DataCatTrois dcattrois = new DataCatTrois();
         DataCategory dcategory = new DataCategory();
         DataOutput doutput = new DataOutput();
 
         DataCategory.getInstance().initCategory();
-        DataLieux.getInstance().initDataLieuxHint();
-        DataCatDeux.getInstance().initDataCatDeuxHint();
-        DataCatTrois.getInstance().initDataCatTroisHint();
+        DataCatUn.getInstance().initDataLieux();
+        DataCatDeux.getInstance().initDataCatDeux();
+        DataCatTrois.getInstance().initDataCatTrois();
         DataOutput.getInstance().initDataOutput();
         //Toast.makeText(getApplicationContext(), String.valueOf(dataoutput.getFullFile().isEmpty()), Toast.LENGTH_SHORT).show();
 
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
 
-        datalieux = DataLieux.getInstance();
+        datacatun = DataCatUn.getInstance();
         datacatdeux = DataCatDeux.getInstance();
         datacattrois = DataCatTrois.getInstance();
         datacategory = DataCategory.getInstance();

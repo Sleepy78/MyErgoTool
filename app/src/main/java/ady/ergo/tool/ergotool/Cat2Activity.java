@@ -15,10 +15,11 @@ public class Cat2Activity extends AppCompatActivity {
     private ToggleButton btnElem1,btnElem2,btnElem3,btnElem4,btnElem5;
     private Button btnC2versConf,btnC2versC1,btnC2versC2,btnC2versC3;
     private EditText textElem1,textElem2,textElem3,textElem4,textElem5;
-    private TextView titlecat2;
+    private TextView titlecat2,tvActiveCat1Elem,tvActiveCat2Elem,tvActiveCat3Elem;
     private DataOutput dataoutput;
-    //private DataLieux datalieux;
+    private DataCatUn datacatun;
     private DataCatDeux datacatdeux;
+    private DataCatTrois datacattrois;
     private DataCategory datacategory;
 
     @Override
@@ -57,9 +58,14 @@ public class Cat2Activity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         dataoutput = DataOutput.getInstance();
+        datacatun = DataCatUn.getInstance();
         datacatdeux = DataCatDeux.getInstance();
+        datacattrois = DataCatTrois.getInstance();
         datacategory = DataCategory.getInstance();
+
         loadState();
+        loadTVActiveCat();
+        setElementActivation();
     }
 
     private void onBtnAction() {
@@ -108,6 +114,9 @@ public class Cat2Activity extends AppCompatActivity {
         btnC2versC2 = (Button)findViewById(R.id.btnC2versC2);
         btnC2versC3 = (Button)findViewById(R.id.btnC2versC3);
 
+        tvActiveCat1Elem = (TextView)findViewById(R.id.tvActiveCat1Elem);
+        tvActiveCat2Elem = (TextView)findViewById(R.id.tvActiveCat2Elem);
+        tvActiveCat3Elem = (TextView)findViewById(R.id.tvActiveCat3Elem);
     }
 
     private void saveBtnState() {
@@ -127,7 +136,6 @@ public class Cat2Activity extends AppCompatActivity {
         datacatdeux.setTextElem5(textElem5.getText().toString());
     }
 
-
     private void loadState() {
         btnElem1.setChecked(datacatdeux.getBtnElem1());
         btnElem2.setChecked(datacatdeux.getBtnElem2());
@@ -139,6 +147,12 @@ public class Cat2Activity extends AppCompatActivity {
         textElem3.setHint(datacatdeux.getHintElem3());
         textElem4.setHint(datacatdeux.getHintElem4());
         textElem5.setHint(datacatdeux.getHintElem5());
+
+        textElem1.setText(datacatdeux.getTextElem1());
+        textElem2.setText(datacatdeux.getTextElem2());
+        textElem3.setText(datacatdeux.getTextElem3());
+        textElem4.setText(datacatdeux.getTextElem4());
+        textElem5.setText(datacatdeux.getTextElem5());
 
         titlecat2.setText(datacategory.getTextCat2());
 
@@ -161,6 +175,12 @@ public class Cat2Activity extends AppCompatActivity {
         }
     }
 
+    private void loadTVActiveCat(){
+        tvActiveCat1Elem.setText((datacategory.getTextTVCat1(datacatun)).replace("   ",", "));
+        tvActiveCat2Elem.setText((datacategory.getTextTVCat2(datacatdeux)).replace("   ",", "));
+        tvActiveCat3Elem.setText((datacategory.getTextTVCat3(datacattrois)).replace("   ",", "));
+    }
+
     private void enableEditTextModification(EditText editText){
         editText.setInputType(InputType.TYPE_CLASS_TEXT);
         editText.setFocusable(true);
@@ -168,5 +188,33 @@ public class Cat2Activity extends AppCompatActivity {
     private void disableEditTextModification(EditText editText){
         editText.setInputType(InputType.TYPE_NULL);
         editText.setFocusable(false);
+    }
+
+    private void setElementActivation() {
+        if(dataoutput.isRunning()){
+            setDisplay(textElem1, btnElem1);
+            setDisplay(textElem2, btnElem2);
+            setDisplay(textElem3, btnElem3);
+            setDisplay(textElem4, btnElem4);
+            setDisplay(textElem5, btnElem5);
+        }else{
+            forceVisible(textElem1, btnElem1);
+            forceVisible(textElem2, btnElem2);
+            forceVisible(textElem3, btnElem3);
+            forceVisible(textElem4, btnElem4);
+            forceVisible(textElem5, btnElem5);
+        }
+    }
+
+    private void setDisplay(EditText et, ToggleButton tbtn){
+        if("".equals(et.getText().toString())){
+            et.setVisibility(View.GONE);
+            tbtn.setVisibility(View.GONE);
+        }
+    }
+
+    private void forceVisible(EditText et, ToggleButton tbtn){
+        et.setVisibility(View.VISIBLE);
+        tbtn.setVisibility(View.VISIBLE);
     }
 }

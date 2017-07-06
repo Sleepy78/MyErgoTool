@@ -16,8 +16,10 @@ public class Cat3Activity extends AppCompatActivity {
     private ToggleButton btnElem1,btnElem2,btnElem3,btnElem4,btnElem5;
     private Button btnC3versConf,btnC3versC1,btnC3versC2,btnC3versC3;
     private EditText textElem1,textElem2,textElem3,textElem4,textElem5;
-    private TextView titlecat3;
+    private TextView titlecat3,tvActiveCat1Elem,tvActiveCat2Elem,tvActiveCat3Elem;
     private DataOutput dataoutput;
+    private DataCatUn datacatun;
+    private DataCatDeux datacatdeux;
     private DataCatTrois datacattrois;
     private DataCategory datacategory;
 
@@ -57,9 +59,14 @@ public class Cat3Activity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         dataoutput = DataOutput.getInstance();
+        datacatun = DataCatUn.getInstance();
+        datacatdeux = DataCatDeux.getInstance();
         datacattrois = DataCatTrois.getInstance();
         datacategory = DataCategory.getInstance();
+
         loadState();
+        loadTVActiveCat();
+        setElementActivation();
     }
 
     private void onBtnAction() {
@@ -108,6 +115,9 @@ public class Cat3Activity extends AppCompatActivity {
         btnC3versC2 = (Button)findViewById(R.id.btnC3versC2);
         btnC3versC3 = (Button)findViewById(R.id.btnC3versC3);
 
+        tvActiveCat1Elem = (TextView)findViewById(R.id.tvActiveCat1Elem);
+        tvActiveCat2Elem = (TextView)findViewById(R.id.tvActiveCat2Elem);
+        tvActiveCat3Elem = (TextView)findViewById(R.id.tvActiveCat3Elem);
     }
 
     private void saveBtnState() {
@@ -140,6 +150,12 @@ public class Cat3Activity extends AppCompatActivity {
         textElem4.setHint(datacattrois.getHintElem4());
         textElem5.setHint(datacattrois.getHintElem5());
 
+        textElem1.setText(datacattrois.getTextElem1());
+        textElem2.setText(datacattrois.getTextElem2());
+        textElem3.setText(datacattrois.getTextElem3());
+        textElem4.setText(datacattrois.getTextElem4());
+        textElem5.setText(datacattrois.getTextElem5());
+
         titlecat3.setText(datacategory.getTextCat3());
 
         btnC3versC1.setText(datacategory.getTextCat1());
@@ -161,6 +177,12 @@ public class Cat3Activity extends AppCompatActivity {
         }
     }
 
+    private void loadTVActiveCat(){
+        tvActiveCat1Elem.setText((datacategory.getTextTVCat1(datacatun)).replace("   ",", "));
+        tvActiveCat2Elem.setText((datacategory.getTextTVCat2(datacatdeux)).replace("   ",", "));
+        tvActiveCat3Elem.setText((datacategory.getTextTVCat3(datacattrois)).replace("   ",", "));
+    }
+
     private void enableEditTextModification(EditText editText){
         editText.setInputType(InputType.TYPE_CLASS_TEXT);
         editText.setFocusable(true);
@@ -168,5 +190,33 @@ public class Cat3Activity extends AppCompatActivity {
     private void disableEditTextModification(EditText editText){
         editText.setInputType(InputType.TYPE_NULL);
         editText.setFocusable(false);
+    }
+
+    private void setElementActivation() {
+        if(dataoutput.isRunning()){
+            setDisplay(textElem1,btnElem1);
+            setDisplay(textElem2,btnElem2);
+            setDisplay(textElem3,btnElem3);
+            setDisplay(textElem4,btnElem4);
+            setDisplay(textElem5,btnElem5);
+        }else{
+            forceVisible(textElem1,btnElem1);
+            forceVisible(textElem2,btnElem2);
+            forceVisible(textElem3,btnElem3);
+            forceVisible(textElem4,btnElem4);
+            forceVisible(textElem5,btnElem5);
+        }
+    }
+
+    private void setDisplay(EditText et, ToggleButton tbtn){
+        if("".equals(et.getText().toString())){
+            et.setVisibility(View.GONE);
+            tbtn.setVisibility(View.GONE);
+        }
+    }
+
+    private void forceVisible(EditText et, ToggleButton tbtn){
+        et.setVisibility(View.VISIBLE);
+        tbtn.setVisibility(View.VISIBLE);
     }
 }

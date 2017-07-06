@@ -47,7 +47,13 @@ public class DataCatDeux {
     private static final DataCatDeux holder = new DataCatDeux();
     public static DataCatDeux getInstance() {return holder;}
 
-    public void initDataCatDeuxHint(){
+    public void initDataCatDeux(){
+        textElem1 = "";
+        textElem2 = "";
+        textElem3 = "";
+        textElem4 = "";
+        textElem5 = "";
+
         hintElem1 = "Elem1Cat2";
         hintElem2 = "Elem2Cat2";
         hintElem3 = "Elem3Cat2";

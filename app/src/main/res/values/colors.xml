@@ -3,7 +3,7 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="Cat1">#fdd6d5</color>
-    <color name="Cat2">#c2e0f7</color>
-    <color name="Cat3">#d6f4a3</color>
+    <color name="Cat1">#cdefae</color>
+    <color name="Cat2">#ffffff</color>
+    <color name="Cat3">#ffe0b7</color>
 </resources>

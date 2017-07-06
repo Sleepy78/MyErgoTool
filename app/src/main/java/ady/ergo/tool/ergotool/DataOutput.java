@@ -37,7 +37,7 @@ public class DataOutput {
     public static DataOutput getInstance() {return holder;}
 
     public boolean updateHeader(){
-        DataLieux datalieux = DataLieux.getInstance();
+        DataCatUn datacatun = DataCatUn.getInstance();
         DataCatDeux datacatdeux = DataCatDeux.getInstance();
         DataCatTrois datacattrois = DataCatTrois.getInstance();
         DataCategory datacat = DataCategory.getInstance();
@@ -50,11 +50,11 @@ public class DataOutput {
         //All about Cat1
         header+=datacat.getTextCat1() + delimitor;
 
-        setElemHeader(datalieux.getTextL1());
-        setElemHeader(datalieux.getTextL2());
-        setElemHeader(datalieux.getTextL3());
-        setElemHeader(datalieux.getTextL4());
-        setElemHeader(datalieux.getTextL5());
+        setElemHeader(datacatun.getTextElem1());
+        setElemHeader(datacatun.getTextElem2());
+        setElemHeader(datacatun.getTextElem3());
+        setElemHeader(datacatun.getTextElem4());
+        setElemHeader(datacatun.getTextElem5());
 
         header+=" " + delimitor;   //Needed for blank in csv output
 
@@ -96,7 +96,7 @@ public class DataOutput {
     }
 
     public String updateOutputLine(){
-        DataLieux datalieux = DataLieux.getInstance();
+        DataCatUn datalieux = DataCatUn.getInstance();
         DataCatDeux datacatdeux = DataCatDeux.getInstance();
         DataCatTrois datacattrois = DataCatTrois.getInstance();
         //DataCategory datacat = DataCategory.getInstance();
@@ -106,16 +106,16 @@ public class DataOutput {
         outputline+=getTime() + delimitor;
         outputline+="" + delimitor;//space for Cat1 columns
 
-        setElemOutputLine(datalieux.getBtnL1(),"1,5");
-        setElemOutputLine(datalieux.getBtnL2(),"2");
-        setElemOutputLine(datalieux.getBtnL3(),"2,5");
-        setElemOutputLine(datalieux.getBtnL4(),"3");
-        setElemOutputLine(datalieux.getBtnL5(),"3,5");
-        /*outputline+=(datalieux.getBtnL1() ? "1,5" : "") + delimitor;
-        outputline+=(datalieux.getBtnL2() ? "2" : "") + delimitor;
-        outputline+=(datalieux.getBtnL3() ? "2,5" : "") + delimitor;
-        outputline+=(datalieux.getBtnL4() ? "3" : "") + delimitor;
-        outputline+=(datalieux.getBtnL5() ? "3,5" : "") + delimitor;*/
+        setElemOutputLine(datalieux.getBtnElem1(),"1,5");
+        setElemOutputLine(datalieux.getBtnElem2(),"2");
+        setElemOutputLine(datalieux.getBtnElem3(),"2,5");
+        setElemOutputLine(datalieux.getBtnElem4(),"3");
+        setElemOutputLine(datalieux.getBtnElem5(),"3,5");
+        /*outputline+=(datalieux.getBtnElem1() ? "1,5" : "") + delimitor;
+        outputline+=(datalieux.getBtnElem2() ? "2" : "") + delimitor;
+        outputline+=(datalieux.getBtnElem3() ? "2,5" : "") + delimitor;
+        outputline+=(datalieux.getBtnElem4() ? "3" : "") + delimitor;
+        outputline+=(datalieux.getBtnElem5() ? "3,5" : "") + delimitor;*/
 
         outputline+="" + delimitor; //space for empty column
         outputline+="" + delimitor; //space for Cat2 columns

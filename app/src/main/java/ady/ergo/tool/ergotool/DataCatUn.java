@@ -1,6 +1,6 @@
 package ady.ergo.tool.ergotool;
 
-public class DataCatTrois {
+public class DataCatUn {
     private boolean btnElem1;
     private boolean btnElem2;
     private boolean btnElem3;
@@ -44,21 +44,19 @@ public class DataCatTrois {
     public void setTextElem4(String text) {this.textElem4 = text;}
     public void setTextElem5(String text) {this.textElem5 = text;}
 
-    private static final DataCatTrois holder = new DataCatTrois();
-    public static DataCatTrois getInstance() {return holder;}
+    private static final DataCatUn holder = new DataCatUn();
+    public static DataCatUn getInstance() {return holder;}
 
-    public void initDataCatTrois(){
+    public void initDataLieux(){
         textElem1 = "";
         textElem2 = "";
         textElem3 = "";
         textElem4 = "";
         textElem5 = "";
-
-        hintElem1 = "Elem1Cat3";
-        hintElem2 = "Elem2Cat3";
-        hintElem3 = "Elem3Cat3";
-        hintElem4 = "Elem4Cat3";
-        hintElem5 = "Elem5Cat3";
+        hintElem1 = "Elem1Cat1";
+        hintElem2 = "Elem2Cat1";
+        hintElem3 = "Elem3Cat1";
+        hintElem4 = "Elem4Cat1";
+        hintElem5 = "Elem5Cat1";
     }
 }
-

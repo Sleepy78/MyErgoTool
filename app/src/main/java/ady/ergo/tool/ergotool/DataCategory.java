@@ -17,7 +17,7 @@ public class DataCategory {
     public void setTextCat2(String text) {this.textCat2 = text;}
     public void setTextCat3(String text) {this.textCat3 = text;}
 
-    public String getTextTVCat1(DataLieux dlieux) {evalCat1(dlieux); return textTVCat1;}
+    public String getTextTVCat1(DataCatUn dlieux) {evalCat1(dlieux); return textTVCat1;}
     public String getTextTVCat2(DataCatDeux dcatdeux) {evalCat2(dcatdeux); return textTVCat2;}
     public String getTextTVCat3(DataCatTrois dcattrois) {evalCat3(dcattrois);return textTVCat3;}
 
@@ -37,22 +37,22 @@ public class DataCategory {
         textTVCat3="";
     }
 
-    private void evalCat1(DataLieux datalieux) {
+    private void evalCat1(DataCatUn datacatun) {
         textTVCat1="";
-        if ( datalieux.getBtnL1() ){
-            textTVCat1+="   " + datalieux.getTextL1();
+        if ( datacatun.getBtnElem1() ){
+            textTVCat1+="   " + datacatun.getTextElem1();
         }
-        if ( datalieux.getBtnL2() ){
-            textTVCat1+="   " + datalieux.getTextL2();
+        if ( datacatun.getBtnElem2() ){
+            textTVCat1+="   " + datacatun.getTextElem2();
         }
-        if ( datalieux.getBtnL3() ){
-            textTVCat1+="   " + datalieux.getTextL3();
+        if ( datacatun.getBtnElem3() ){
+            textTVCat1+="   " + datacatun.getTextElem3();
         }
-        if ( datalieux.getBtnL4() ){
-            textTVCat1+="   " + datalieux.getTextL4();
+        if ( datacatun.getBtnElem4() ){
+            textTVCat1+="   " + datacatun.getTextElem4();
         }
-        if ( datalieux.getBtnL5() ){
-            textTVCat1+="   " + datalieux.getTextL5();
+        if ( datacatun.getBtnElem5() ){
+            textTVCat1+="   " + datacatun.getTextElem5();
         }
     }
 
