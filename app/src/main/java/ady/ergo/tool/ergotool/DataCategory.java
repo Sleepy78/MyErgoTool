@@ -40,56 +40,59 @@ public class DataCategory {
     private void evalCat1(DataCatUn datacatun) {
         textTVCat1="";
         if ( datacatun.getBtnElem1() ){
-            textTVCat1+="   " + datacatun.getTextElem1();
+            textTVCat1+=datacatun.getTextElem1() + "   ";
         }
         if ( datacatun.getBtnElem2() ){
-            textTVCat1+="   " + datacatun.getTextElem2();
+            textTVCat1+=datacatun.getTextElem2() + "   ";
         }
         if ( datacatun.getBtnElem3() ){
-            textTVCat1+="   " + datacatun.getTextElem3();
+            textTVCat1+=datacatun.getTextElem3() + "   ";
         }
         if ( datacatun.getBtnElem4() ){
-            textTVCat1+="   " + datacatun.getTextElem4();
+            textTVCat1+=datacatun.getTextElem4() + "   ";
         }
         if ( datacatun.getBtnElem5() ){
-            textTVCat1+="   " + datacatun.getTextElem5();
+            textTVCat1+=datacatun.getTextElem5() + "   ";
         }
+        textTVCat1.trim();
     }
 
     private void evalCat2(DataCatDeux datacatdeux) {
         textTVCat2="";
         if ( datacatdeux.getBtnElem1() ){
-            textTVCat2+="   " + datacatdeux.getTextElem1();
+            textTVCat2+=datacatdeux.getTextElem1() + "   ";
         }
         if ( datacatdeux.getBtnElem2() ){
-            textTVCat2+="   " + datacatdeux.getTextElem2();
+            textTVCat2+=datacatdeux.getTextElem2() + "   ";
         }
         if ( datacatdeux.getBtnElem3() ){
-            textTVCat2+="   " + datacatdeux.getTextElem3();
+            textTVCat2+=datacatdeux.getTextElem3() + "   ";
         }
         if ( datacatdeux.getBtnElem4() ){
-            textTVCat2+="   " + datacatdeux.getTextElem4();
+            textTVCat2+=datacatdeux.getTextElem4() + "   ";
         }
         if ( datacatdeux.getBtnElem5() ){
-            textTVCat2+="   " + datacatdeux.getTextElem5();
+            textTVCat2+=datacatdeux.getTextElem5() + "   ";
         }
+        textTVCat2.trim();
     }
     private void evalCat3(DataCatTrois datacattrois) {
         textTVCat3="";
         if ( datacattrois.getBtnElem1() ){
-            textTVCat3+="   " + datacattrois.getTextElem1();
+            textTVCat3+=datacattrois.getTextElem1() + "   ";
         }
         if ( datacattrois.getBtnElem2() ){
-            textTVCat3+="   " + datacattrois.getTextElem2();
+            textTVCat3+=datacattrois.getTextElem2() + "   ";
         }
         if ( datacattrois.getBtnElem3() ){
-            textTVCat3+="   " + datacattrois.getTextElem3();
+            textTVCat3+=datacattrois.getTextElem3() + "   ";
         }
         if ( datacattrois.getBtnElem4() ){
-            textTVCat3+="   " + datacattrois.getTextElem4();
+            textTVCat3+=datacattrois.getTextElem4() + "   ";
         }
         if ( datacattrois.getBtnElem5() ){
-            textTVCat3+="   " + datacattrois.getTextElem5();
+            textTVCat3+=datacattrois.getTextElem5() + "   ";
         }
+        textTVCat3.trim();
     }
 }
