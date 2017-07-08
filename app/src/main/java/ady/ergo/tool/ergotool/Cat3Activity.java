@@ -178,9 +178,9 @@ public class Cat3Activity extends AppCompatActivity {
     }
 
     private void loadTVActiveCat(){
-        tvActiveCat1Elem.setText((datacategory.getTextTVCat1(datacatun)).replace("   ",", "));
-        tvActiveCat2Elem.setText((datacategory.getTextTVCat2(datacatdeux)).replace("   ",", "));
-        tvActiveCat3Elem.setText((datacategory.getTextTVCat3(datacattrois)).replace("   ",", "));
+        tvActiveCat1Elem.setText((datacategory.getTextTVCat1(datacatun)));
+        tvActiveCat2Elem.setText((datacategory.getTextTVCat2(datacatdeux)));
+        tvActiveCat3Elem.setText((datacategory.getTextTVCat3(datacattrois)));
     }
 
     private void enableEditTextModification(EditText editText){
