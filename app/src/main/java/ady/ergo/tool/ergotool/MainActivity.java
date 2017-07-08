@@ -1,5 +1,7 @@
 package ady.ergo.tool.ergotool;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
@@ -74,34 +76,36 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickBtnStart(View view) {
-        String header;
-
-        boolean isRunning = dataoutput.isRunning();
-        if(!isRunning && dataoutput.updateHeader()) {
-            dataoutput.setInitTime(System.currentTimeMillis());
-            header = dataoutput.getHeader();
-            dataoutput.initFullFile(header);
-            //Toast.makeText(getApplicationContext(), dataoutput.getFullFile().get(0).toString(), Toast.LENGTH_SHORT).show();
-            Toast.makeText(getApplicationContext(), "C'est parti !", Toast.LENGTH_SHORT).show();
-            dataoutput.setIsRunning(true);
-            dataoutput.setIsSentable(false);
-            Intent intent = new Intent(MainActivity.this, ChooseActivity.class);
-            startActivity(intent);
-        }else {
-            if(isRunning)
-                Toast.makeText(getApplicationContext(), "Déjà lancé, aller dans CONFIGURATION", Toast.LENGTH_SHORT).show();
-            else
-                Toast.makeText(getApplicationContext(), "Finir de configurer avant de commencer", Toast.LENGTH_SHORT).show();
+        boolean isSentable = dataoutput.isSentable();
+        if(isSentable) {
+            AlertDialog.Builder b = new AlertDialog.Builder(this);
+            b.setTitle("Current activity will be lost! Are you sure you want to continue ?");
+            b.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    cleanFile();
+                    boolean isRunning = dataoutput.isRunning();
+                    if(!isRunning && dataoutput.updateHeader()) {
+                        launchAnalysis();
+                    }else {
+                        if(isRunning)
+                            Toast.makeText(getApplicationContext(), "Déjà lancé, aller dans CONFIGURATION", Toast.LENGTH_SHORT).show();
+                        else
+                            Toast.makeText(getApplicationContext(), "Finir de configurer avant de commencer", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+            b.setNegativeButton("CANCEL", null);
+            b.show();
+        }else{
+            launchAnalysis();
         }
-
     }
 
     public void onClickBtnSend(View view) {
         boolean isSentable = dataoutput.isSentable();
         if(isSentable) {
-
             sendMail();
-
         }else{
             Toast.makeText(getApplicationContext(), "Rien à envoyer!", Toast.LENGTH_SHORT).show();
         }
@@ -110,12 +114,38 @@ public class MainActivity extends AppCompatActivity {
     public void onClickBtnClean(View view) {
         boolean isSentable = dataoutput.isSentable();
         if(isSentable) {
-            dataoutput.clean();
-            getApplicationContext().deleteFile(filename);
-            dataoutput.setIsSentable(false);
+            AlertDialog.Builder b = new AlertDialog.Builder(this);
+            b.setTitle("All current logged analysis will be lost! Are you sure you want to clean? ");
+            b.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    cleanFile();
+                }
+            });
+            b.setNegativeButton("CANCEL", null);
+            b.show();
         }else{
             Toast.makeText(getApplicationContext(), "Rien à nettoyer!", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private void launchAnalysis(){
+        dataoutput.setInitTime(System.currentTimeMillis());
+        String header = dataoutput.getHeader();
+        dataoutput.initFullFile(header);
+        //Toast.makeText(getApplicationContext(), dataoutput.getFullFile().get(0).toString(), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "C'est parti !", Toast.LENGTH_SHORT).show();
+        dataoutput.setIsRunning(true);
+        dataoutput.setIsSentable(false);
+        Intent intent = new Intent(MainActivity.this, ChooseActivity.class);
+        startActivity(intent);
+    }
+
+    private void cleanFile(){
+        dataoutput.clean();
+        getApplicationContext().deleteFile(filename);
+        dataoutput.setIsSentable(false);
+        Toast.makeText(getApplicationContext(), "Cleaning OK", Toast.LENGTH_SHORT).show();
     }
 
     public void sendMail() {

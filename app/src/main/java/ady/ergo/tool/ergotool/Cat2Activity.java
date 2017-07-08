@@ -88,7 +88,7 @@ public class Cat2Activity extends AppCompatActivity {
         startActivity(intent);
     }
     public void onClickBtnC2versC1(View view) {
-        Intent intent = new Intent(Cat2Activity.this, LieuxActivity.class);
+        Intent intent = new Intent(Cat2Activity.this, Cat1Activity.class);
         startActivity(intent);
     }
     public void onClickBtnC2versC3(View view) {

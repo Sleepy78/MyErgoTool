@@ -20,7 +20,7 @@
             android:name=".ChooseActivity"
             android:launchMode="singleTask" />
         <activity
-            android:name=".LieuxActivity"
+            android:name=".Cat1Activity"
             android:launchMode="singleTask"/>
         <activity
             android:name=".Cat2Activity"

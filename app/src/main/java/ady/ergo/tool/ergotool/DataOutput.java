@@ -55,6 +55,16 @@ public class DataOutput {
         setElemHeader(datacatun.getTextElem3());
         setElemHeader(datacatun.getTextElem4());
         setElemHeader(datacatun.getTextElem5());
+        setElemHeader(datacatun.getTextElem6());
+        setElemHeader(datacatun.getTextElem7());
+        setElemHeader(datacatun.getTextElem8());
+        setElemHeader(datacatun.getTextElem9());
+        setElemHeader(datacatun.getTextElem10());
+        setElemHeader(datacatun.getTextElem11());
+        setElemHeader(datacatun.getTextElem12());
+        setElemHeader(datacatun.getTextElem13());
+        setElemHeader(datacatun.getTextElem14());
+        setElemHeader(datacatun.getTextElem15());
 
         header+=" " + delimitor;   //Needed for blank in csv output
 
@@ -66,11 +76,6 @@ public class DataOutput {
         setElemHeader(datacatdeux.getTextElem3());
         setElemHeader(datacatdeux.getTextElem4());
         setElemHeader(datacatdeux.getTextElem5());
-        /*header+=datacatdeux.getTextElem1() + delimitor;
-        header+=datacatdeux.getTextElem2() + delimitor;
-        header+=datacatdeux.getTextElem3() + delimitor;
-        header+=datacatdeux.getTextElem4() + delimitor;
-        header+=datacatdeux.getTextElem5() + delimitor;*/
 
         header+=" " + delimitor;   //Needed for blank in csv output
 
@@ -82,21 +87,14 @@ public class DataOutput {
         setElemHeader(datacattrois.getTextElem3());
         setElemHeader(datacattrois.getTextElem4());
         setElemHeader(datacattrois.getTextElem5());
-        /*header+=datacattrois.getTextElem1() + delimitor;
-        header+=datacattrois.getTextElem2() + delimitor;
-        header+=datacattrois.getTextElem3() + delimitor;
-        header+=datacattrois.getTextElem4() + delimitor;
-        header+=datacattrois.getTextElem5() + delimitor;*/
 
         header+=" " + delimitor;   //Needed for blank in csv output
-
-        //if(!header.contains(delimitor + "null" + delimitor) && !header.contains(delimitor + delimitor)){return true;}
 
         return true;
     }
 
     public String updateOutputLine(){
-        DataCatUn datalieux = DataCatUn.getInstance();
+        DataCatUn datacatun = DataCatUn.getInstance();
         DataCatDeux datacatdeux = DataCatDeux.getInstance();
         DataCatTrois datacattrois = DataCatTrois.getInstance();
         //DataCategory datacat = DataCategory.getInstance();
@@ -106,16 +104,21 @@ public class DataOutput {
         outputline+=getTime() + delimitor;
         outputline+="" + delimitor;//space for Cat1 columns
 
-        setElemOutputLine(datalieux.getBtnElem1(),"1,5");
-        setElemOutputLine(datalieux.getBtnElem2(),"2");
-        setElemOutputLine(datalieux.getBtnElem3(),"2,5");
-        setElemOutputLine(datalieux.getBtnElem4(),"3");
-        setElemOutputLine(datalieux.getBtnElem5(),"3,5");
-        /*outputline+=(datalieux.getBtnElem1() ? "1,5" : "") + delimitor;
-        outputline+=(datalieux.getBtnElem2() ? "2" : "") + delimitor;
-        outputline+=(datalieux.getBtnElem3() ? "2,5" : "") + delimitor;
-        outputline+=(datalieux.getBtnElem4() ? "3" : "") + delimitor;
-        outputline+=(datalieux.getBtnElem5() ? "3,5" : "") + delimitor;*/
+        setElemOutputLine(datacatun.getBtnElem1(),"1,5");
+        setElemOutputLine(datacatun.getBtnElem2(),"2");
+        setElemOutputLine(datacatun.getBtnElem3(),"2,5");
+        setElemOutputLine(datacatun.getBtnElem4(),"3");
+        setElemOutputLine(datacatun.getBtnElem5(),"3,5");
+        setElemOutputLine(datacatun.getBtnElem6(),"4");
+        setElemOutputLine(datacatun.getBtnElem7(),"4,5");
+        setElemOutputLine(datacatun.getBtnElem8(),"5");
+        setElemOutputLine(datacatun.getBtnElem9(),"5,5");
+        setElemOutputLine(datacatun.getBtnElem10(),"6");
+        setElemOutputLine(datacatun.getBtnElem11(),"6,5");
+        setElemOutputLine(datacatun.getBtnElem12(),"7");
+        setElemOutputLine(datacatun.getBtnElem13(),"7,5");
+        setElemOutputLine(datacatun.getBtnElem14(),"8");
+        setElemOutputLine(datacatun.getBtnElem15(),"8,5");
 
         outputline+="" + delimitor; //space for empty column
         outputline+="" + delimitor; //space for Cat2 columns
@@ -126,12 +129,6 @@ public class DataOutput {
         setElemOutputLine(datacatdeux.getBtnElem4(),"30");
         setElemOutputLine(datacatdeux.getBtnElem5(),"35");
 
-        /*outputline+=(datacatdeux.getBtnElem1() ? "15" : "") + delimitor;
-        outputline+=(datacatdeux.getBtnElem2() ? "20" : "") + delimitor;
-        outputline+=(datacatdeux.getBtnElem3() ? "25" : "") + delimitor;
-        outputline+=(datacatdeux.getBtnElem4() ? "30" : "") + delimitor;
-        outputline+=(datacatdeux.getBtnElem5() ? "35" : "") + delimitor;*/
-
         outputline+="" + delimitor; //space for empty column
         outputline+="" + delimitor; //space for Cat3 columns
 
@@ -140,11 +137,6 @@ public class DataOutput {
         setElemOutputLine(datacattrois.getBtnElem3(),"250");
         setElemOutputLine(datacattrois.getBtnElem4(),"300");
         setElemOutputLine(datacattrois.getBtnElem5(),"350");
-        /*outputline+=(datacattrois.getBtnElem1() ? "150" : "") + delimitor;
-        outputline+=(datacattrois.getBtnElem2() ? "200" : "") + delimitor;
-        outputline+=(datacattrois.getBtnElem3() ? "250" : "") + delimitor;
-        outputline+=(datacattrois.getBtnElem4() ? "300" : "") + delimitor;
-        outputline+=(datacattrois.getBtnElem5() ? "350" : "") + delimitor;*/
 
         return outputline;
     }

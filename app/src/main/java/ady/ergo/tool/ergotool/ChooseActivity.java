@@ -48,7 +48,6 @@ public class ChooseActivity extends AppCompatActivity {
         loadBtnText();
         loadTVCat();
         setEditBtnActivation(); //hide edit button if running
-
     }
 
     @Override
@@ -57,6 +56,7 @@ public class ChooseActivity extends AppCompatActivity {
         saveBtnText();
 
     }
+
     private void setEditBtnActivation() {
         if(dataoutput.isRunning()){
             btnEditCat1.setVisibility(View.GONE);
@@ -69,8 +69,8 @@ public class ChooseActivity extends AppCompatActivity {
         }
     }
 
-    public void onclickBtnLieux(View view) {
-        Intent intent = new Intent(ChooseActivity.this, LieuxActivity.class);
+    public void onclickBtnCat1(View view) {
+        Intent intent = new Intent(ChooseActivity.this, Cat1Activity.class);
         startActivity(intent);
     }
 
@@ -176,7 +176,6 @@ public class ChooseActivity extends AppCompatActivity {
         try {
             fos = getApplicationContext().openFileOutput(filename, Context.MODE_PRIVATE);
             fos.write(fulltext.getBytes());
-            //readFile();
             return true;
         } catch (FileNotFoundException e) {
             Toast.makeText(ChooseActivity.this, "File not found!", Toast.LENGTH_SHORT).show();

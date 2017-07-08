@@ -89,7 +89,7 @@ public class Cat3Activity extends AppCompatActivity {
         startActivity(intent);
     }
     public void onClickBtnC3versC1(View view) {
-        Intent intent = new Intent(Cat3Activity.this, LieuxActivity.class);
+        Intent intent = new Intent(Cat3Activity.this, Cat1Activity.class);
         startActivity(intent);
     }
     public void onClickBtnC3versC2(View view) {
