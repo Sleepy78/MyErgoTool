@@ -54,6 +54,36 @@ public class DataCategory {
         if ( datacatun.getBtnElem5() ){
             textTVCat1+=datacatun.getTextElem5() + "   ";
         }
+        if ( datacatun.getBtnElem6() ){
+            textTVCat1+=datacatun.getTextElem6() + "   ";
+        }
+        if ( datacatun.getBtnElem7() ){
+            textTVCat1+=datacatun.getTextElem7() + "   ";
+        }
+        if ( datacatun.getBtnElem8() ){
+            textTVCat1+=datacatun.getTextElem8() + "   ";
+        }
+        if ( datacatun.getBtnElem9() ){
+            textTVCat1+=datacatun.getTextElem9() + "   ";
+        }
+        if ( datacatun.getBtnElem10() ){
+            textTVCat1+=datacatun.getTextElem10() + "   ";
+        }
+        if ( datacatun.getBtnElem11() ){
+            textTVCat1+=datacatun.getTextElem11() + "   ";
+        }
+        if ( datacatun.getBtnElem12() ){
+            textTVCat1+=datacatun.getTextElem12() + "   ";
+        }
+        if ( datacatun.getBtnElem13() ){
+            textTVCat1+=datacatun.getTextElem13() + "   ";
+        }
+        if ( datacatun.getBtnElem14() ){
+            textTVCat1+=datacatun.getTextElem14() + "   ";
+        }
+        if ( datacatun.getBtnElem15() ){
+            textTVCat1+=datacatun.getTextElem15() + "   ";
+        }
         textTVCat1.trim();
     }
 
@@ -74,6 +104,36 @@ public class DataCategory {
         if ( datacatdeux.getBtnElem5() ){
             textTVCat2+=datacatdeux.getTextElem5() + "   ";
         }
+        if ( datacatdeux.getBtnElem6() ){
+            textTVCat2+=datacatdeux.getTextElem6() + "   ";
+        }
+        if ( datacatdeux.getBtnElem7() ){
+            textTVCat2+=datacatdeux.getTextElem7() + "   ";
+        }
+        if ( datacatdeux.getBtnElem8() ){
+            textTVCat2+=datacatdeux.getTextElem8() + "   ";
+        }
+        if ( datacatdeux.getBtnElem9() ){
+            textTVCat2+=datacatdeux.getTextElem9() + "   ";
+        }
+        if ( datacatdeux.getBtnElem10() ){
+            textTVCat2+=datacatdeux.getTextElem10() + "   ";
+        }
+        if ( datacatdeux.getBtnElem11() ){
+            textTVCat2+=datacatdeux.getTextElem11() + "   ";
+        }
+        if ( datacatdeux.getBtnElem12() ){
+            textTVCat2+=datacatdeux.getTextElem12() + "   ";
+        }
+        if ( datacatdeux.getBtnElem13() ){
+            textTVCat2+=datacatdeux.getTextElem13() + "   ";
+        }
+        if ( datacatdeux.getBtnElem14() ){
+            textTVCat2+=datacatdeux.getTextElem14() + "   ";
+        }
+        if ( datacatdeux.getBtnElem15() ){
+            textTVCat2+=datacatdeux.getTextElem15() + "   ";
+        }
         textTVCat2.trim();
     }
     private void evalCat3(DataCatTrois datacattrois) {
@@ -92,6 +152,36 @@ public class DataCategory {
         }
         if ( datacattrois.getBtnElem5() ){
             textTVCat3+=datacattrois.getTextElem5() + "   ";
+        }
+        if ( datacattrois.getBtnElem6() ){
+            textTVCat3+=datacattrois.getTextElem6() + "   ";
+        }
+        if ( datacattrois.getBtnElem7() ){
+            textTVCat3+=datacattrois.getTextElem7() + "   ";
+        }
+        if ( datacattrois.getBtnElem8() ){
+            textTVCat3+=datacattrois.getTextElem8() + "   ";
+        }
+        if ( datacattrois.getBtnElem9() ){
+            textTVCat3+=datacattrois.getTextElem9() + "   ";
+        }
+        if ( datacattrois.getBtnElem10() ){
+            textTVCat3+=datacattrois.getTextElem10() + "   ";
+        }
+        if ( datacattrois.getBtnElem11() ){
+            textTVCat3+=datacattrois.getTextElem11() + "   ";
+        }
+        if ( datacattrois.getBtnElem12() ){
+            textTVCat3+=datacattrois.getTextElem12() + "   ";
+        }
+        if ( datacattrois.getBtnElem13() ){
+            textTVCat3+=datacattrois.getTextElem13() + "   ";
+        }
+        if ( datacattrois.getBtnElem14() ){
+            textTVCat3+=datacattrois.getTextElem14() + "   ";
+        }
+        if ( datacattrois.getBtnElem15() ){
+            textTVCat3+=datacattrois.getTextElem15() + "   ";
         }
         textTVCat3.trim();
     }
