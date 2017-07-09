@@ -1,8 +1,10 @@
 package ady.ergo.tool.ergotool;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,19 +35,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         setContentView(activity_main);
-        DataCatUn dlieux = new DataCatUn();
+        DataCatUn dcatun = new DataCatUn();
         DataCatDeux dcatdeux = new DataCatDeux();
         DataCatTrois dcattrois = new DataCatTrois();
         DataCategory dcategory = new DataCategory();
         DataOutput doutput = new DataOutput();
 
         DataCategory.getInstance().initCategory();
-        DataCatUn.getInstance().initDataLieux();
+        DataCatUn.getInstance().initDataCatUn();
         DataCatDeux.getInstance().initDataCatDeux();
         DataCatTrois.getInstance().initDataCatTrois();
         DataOutput.getInstance().initDataOutput();
-        //Toast.makeText(getApplicationContext(), String.valueOf(dataoutput.getFullFile().isEmpty()), Toast.LENGTH_SHORT).show();
 
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        /*SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putBoolean("isSentable", dataoutput.isSentable());
+        editor.commit();*/
     }
 
     @Override
@@ -63,6 +73,11 @@ public class MainActivity extends AppCompatActivity {
         }else{
             findViewById(R.id.btnStart).setBackgroundColor(Color.WHITE);
         }
+
+        /*if(!dataoutput.isSentable()) {
+            SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
+            dataoutput.setIsSentable(sharedPref.getBoolean("isSentable", false));
+        }*/
     }
 
     public void onClickBtnConf(View view) {
@@ -77,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void onClickBtnStart(View view) {
         boolean isSentable = dataoutput.isSentable();
+        final boolean isRunning  = dataoutput.isRunning();
         if(isSentable) {
             AlertDialog.Builder b = new AlertDialog.Builder(this);
             b.setTitle("Current activity will be lost! Are you sure you want to continue ?");
@@ -84,7 +100,6 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int whichButton) {
                     cleanFile();
-                    boolean isRunning = dataoutput.isRunning();
                     if(!isRunning && dataoutput.updateHeader()) {
                         launchAnalysis();
                     }else {
@@ -98,7 +113,14 @@ public class MainActivity extends AppCompatActivity {
             b.setNegativeButton("CANCEL", null);
             b.show();
         }else{
-            launchAnalysis();
+            if(!isRunning && dataoutput.updateHeader()) {
+                launchAnalysis();
+            }else {
+                if(isRunning)
+                    Toast.makeText(getApplicationContext(), "Déjà lancé, aller dans CONFIGURATION", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(getApplicationContext(), "Finir de configurer avant de commencer", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

@@ -11,20 +11,20 @@ import java.util.ArrayList;
 
 public class Categorie {
     private Activity activity;
-    private ArrayList<Element> elements;
+    private ArrayList<ElementTry> elements;
     private LinearLayout verticalLL;
     private Button addElement;
 
     public Categorie(Activity act) {
         activity = act;
-        this.elements =  new ArrayList<Element>();
+        this.elements =  new ArrayList<ElementTry>();
 
         addElement = (Button) activity.findViewById(R.id.btnAddElement);
         addElement.setOnClickListener(listenerAddAnElement);
         verticalLL = (LinearLayout)activity.findViewById(R.id.linearLayout);
 
         //create a first element
-        elements.add(new Element(activity));
+        elements.add(new ElementTry(activity));
 
         //Add first element to linearlayout
         verticalLL.addView(elements.get(elements.size()-1).getHorizontalLL());
@@ -34,7 +34,7 @@ public class Categorie {
 
         @Override
         public void onClick(View v) {
-            elements.add(new Element(activity));
+            elements.add(new ElementTry(activity));
             verticalLL.addView(elements.get(elements.size()-1).getHorizontalLL());
         }
     };

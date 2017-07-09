@@ -50,21 +50,21 @@ public class DataOutput {
         //All about Cat1
         header+=datacat.getTextCat1() + delimitor;
 
-        setElemHeader(datacatun.getTextElem1());
-        setElemHeader(datacatun.getTextElem2());
-        setElemHeader(datacatun.getTextElem3());
-        setElemHeader(datacatun.getTextElem4());
-        setElemHeader(datacatun.getTextElem5());
-        setElemHeader(datacatun.getTextElem6());
-        setElemHeader(datacatun.getTextElem7());
-        setElemHeader(datacatun.getTextElem8());
-        setElemHeader(datacatun.getTextElem9());
-        setElemHeader(datacatun.getTextElem10());
-        setElemHeader(datacatun.getTextElem11());
-        setElemHeader(datacatun.getTextElem12());
-        setElemHeader(datacatun.getTextElem13());
-        setElemHeader(datacatun.getTextElem14());
-        setElemHeader(datacatun.getTextElem15());
+        setElemHeader(datacatun.getTextElem(1));
+        setElemHeader(datacatun.getTextElem(2));
+        setElemHeader(datacatun.getTextElem(3));
+        setElemHeader(datacatun.getTextElem(4));
+        setElemHeader(datacatun.getTextElem(5));
+        setElemHeader(datacatun.getTextElem(6));
+        setElemHeader(datacatun.getTextElem(7));
+        setElemHeader(datacatun.getTextElem(8));
+        setElemHeader(datacatun.getTextElem(9));
+        setElemHeader(datacatun.getTextElem(10));
+        setElemHeader(datacatun.getTextElem(11));
+        setElemHeader(datacatun.getTextElem(12));
+        setElemHeader(datacatun.getTextElem(13));
+        setElemHeader(datacatun.getTextElem(14));
+        setElemHeader(datacatun.getTextElem(15));
 
         header+=" " + delimitor;   //Needed for blank in csv output
 
@@ -124,21 +124,21 @@ public class DataOutput {
         outputline+=getTime() + delimitor;
         outputline+="" + delimitor;//space for Cat1 columns
 
-        setElemOutputLine(datacatun.getBtnElem1(),"1,5");
-        setElemOutputLine(datacatun.getBtnElem2(),"2");
-        setElemOutputLine(datacatun.getBtnElem3(),"2,5");
-        setElemOutputLine(datacatun.getBtnElem4(),"3");
-        setElemOutputLine(datacatun.getBtnElem5(),"3,5");
-        setElemOutputLine(datacatun.getBtnElem6(),"4");
-        setElemOutputLine(datacatun.getBtnElem7(),"4,5");
-        setElemOutputLine(datacatun.getBtnElem8(),"5");
-        setElemOutputLine(datacatun.getBtnElem9(),"5,5");
-        setElemOutputLine(datacatun.getBtnElem10(),"6");
-        setElemOutputLine(datacatun.getBtnElem11(),"6,5");
-        setElemOutputLine(datacatun.getBtnElem12(),"7");
-        setElemOutputLine(datacatun.getBtnElem13(),"7,5");
-        setElemOutputLine(datacatun.getBtnElem14(),"8");
-        setElemOutputLine(datacatun.getBtnElem15(),"8,5");
+        setElemOutputLine(datacatun.getBtnElem(1),"1,5");
+        setElemOutputLine(datacatun.getBtnElem(2),"2");
+        setElemOutputLine(datacatun.getBtnElem(3),"2,5");
+        setElemOutputLine(datacatun.getBtnElem(4),"3");
+        setElemOutputLine(datacatun.getBtnElem(5),"3,5");
+        setElemOutputLine(datacatun.getBtnElem(6),"4");
+        setElemOutputLine(datacatun.getBtnElem(7),"4,5");
+        setElemOutputLine(datacatun.getBtnElem(8),"5");
+        setElemOutputLine(datacatun.getBtnElem(9),"5,5");
+        setElemOutputLine(datacatun.getBtnElem(10),"6");
+        setElemOutputLine(datacatun.getBtnElem(11),"6,5");
+        setElemOutputLine(datacatun.getBtnElem(12),"7");
+        setElemOutputLine(datacatun.getBtnElem(13),"7,5");
+        setElemOutputLine(datacatun.getBtnElem(14),"8");
+        setElemOutputLine(datacatun.getBtnElem(15),"8,5");
 
         outputline+="" + delimitor; //space for empty column
         outputline+="" + delimitor; //space for Cat2 columns
