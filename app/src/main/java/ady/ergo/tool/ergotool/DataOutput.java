@@ -1,5 +1,12 @@
 package ady.ergo.tool.ergotool;
 
+import android.app.Activity;
+import android.content.Context;
+import android.widget.Toast;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.ArrayList;
@@ -7,7 +14,8 @@ import java.util.ArrayList;
 public class DataOutput {
     private String header;
     private String outputline;
-    private ArrayList fullFile;
+
+    private ArrayList<String> fullFile;
     private boolean isRunning;
     private boolean isSentable;
     private long initTime;
@@ -15,6 +23,7 @@ public class DataOutput {
 
     public String getHeader() {return header;}
     public void setInitTime(long t) {initTime = t;}
+    public long getInitTime() {return initTime;}
 
     public String getOutputLine() {return outputline;}
     public void setOutputLine(String out) {outputline = out;}
@@ -25,18 +34,20 @@ public class DataOutput {
     public boolean isSentable() {return isSentable;}
     public void setIsSentable(boolean sentable) {isSentable = sentable;}
 
-    public ArrayList getFullFile() {return fullFile;}
-    public void initFullFile(String header) {
-        fullFile = new ArrayList();
-        fullFile.add(header);
+    public ArrayList<String> getFullFile() {return fullFile;}
+    public void setFullFile(ArrayList<String> list) {
+        this.fullFile = list;
     }
-    public void addFullFile(String line) {fullFile.add(line);}
 
+    public void addFullFile(String line) {fullFile.add(line);}
 
     private static final DataOutput holder = new DataOutput();
     public static DataOutput getInstance() {return holder;}
+    public DataOutput(){
+        fullFile = new ArrayList<String>();
+    }
 
-    public boolean updateHeader(){
+    private boolean updateHeader(){
         DataCatUn datacatun = DataCatUn.getInstance();
         DataCatDeux datacatdeux = DataCatDeux.getInstance();
         DataCatTrois datacattrois = DataCatTrois.getInstance();
@@ -186,7 +197,9 @@ public class DataOutput {
     public void clean(){
         cleanOutputLine();
         cleanHeader();
-        fullFile.clear();
+        if (!fullFile.isEmpty()) {
+            fullFile.clear();
+        }
     }
 
     public void initDataOutput(){
@@ -222,4 +235,30 @@ public class DataOutput {
         }
     }
 
+    public boolean writeFile(Activity act) throws IOException{
+        String FILENAME = "ErgoTool.csv";
+        String outputLine = updateOutputLine();                  //update outputline one last time
+        addFullFile(outputLine);             //and add to fullfile
+        cleanOutputLine();
+        updateHeader();
+        String fulltext = getHeader() + "\n";
+
+
+        for (int i = 0; i < fullFile.size(); i++) {
+            fulltext += fullFile.get(i);
+            fulltext += "\n";
+        }
+
+        FileOutputStream fos = null;
+        try {
+            fos = act.getApplicationContext().openFileOutput(FILENAME, Context.MODE_PRIVATE);
+            fos.write(fulltext.getBytes());
+            return true;
+        } catch (FileNotFoundException e) {
+            throw new FileNotFoundException();
+        } catch (IOException e) {
+            throw new IOException();
+        }
+
+    }
 }

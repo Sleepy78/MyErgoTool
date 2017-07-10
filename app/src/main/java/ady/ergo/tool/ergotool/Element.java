@@ -26,8 +26,8 @@ public class Element {
     }
 
     public Element(int cat, int elem){
-        textElem = "";
-        hintElem = "Elem"+elem+"Cat"+cat;
+        textElem = String.valueOf(elem);
+        hintElem = "Element name";
     }
 }
 

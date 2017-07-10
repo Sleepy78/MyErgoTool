@@ -88,7 +88,13 @@ public class ChooseActivity extends AppCompatActivity {
         boolean isRunning = dataoutput.isRunning();
         if(isRunning) {
 
-            writeFile();
+            try {
+                dataoutput.writeFile(ChooseActivity.this);
+            } catch (FileNotFoundException e) {
+                Toast.makeText(ChooseActivity.this, "File not found!", Toast.LENGTH_SHORT).show();
+            } catch (IOException e) {
+                Toast.makeText(ChooseActivity.this, "Cannot write in file!", Toast.LENGTH_SHORT).show();
+            }
             dataoutput.setIsRunning(false);
             dataoutput.setIsSentable(true);
             setStopColor();
@@ -161,11 +167,14 @@ public class ChooseActivity extends AppCompatActivity {
 
 
     private boolean writeFile(){
+        //dataoutput.initFullFile(header);
+
         String outputLine = dataoutput.updateOutputLine();                  //update outputline one last time
         dataoutput.addFullFile(outputLine);             //and add to fullfile
         dataoutput.cleanOutputLine();
 
-        String fulltext = "";
+        String fulltext = dataoutput.getHeader() + "\n";
+
         ArrayList outFile = dataoutput.getFullFile();
         for (int i = 0; i < outFile.size(); i++) {
             fulltext += outFile.get(i);

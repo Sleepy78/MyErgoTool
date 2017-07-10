@@ -132,11 +132,11 @@ public class DataCatTrois {
     public static DataCatTrois getInstance() {return holder;}
 
     public void initDataCatTrois(){
-        textElem1 = "";
-        textElem2 = "";
-        textElem3 = "";
-        textElem4 = "";
-        textElem5 = "";
+        textElem1 = "1";
+        textElem2 = "2";
+        textElem3 = "3";
+        textElem4 = "4";
+        textElem5 = "5";
 
         hintElem1 = "Elem1Cat3";
         hintElem2 = "Elem2Cat3";
@@ -144,22 +144,22 @@ public class DataCatTrois {
         hintElem4 = "Elem4Cat3";
         hintElem5 = "Elem5Cat3";
 
-        textElem6 = "";
-        textElem7 = "";
-        textElem8 = "";
-        textElem9 = "";
-        textElem10 = "";
+        textElem6 = "6";
+        textElem7 = "7";
+        textElem8 = "8";
+        textElem9 = "9";
+        textElem10 = "10";
         hintElem6 = "Elem6Cat3";
         hintElem7 = "Elem7Cat3";
         hintElem8 = "Elem8Cat3";
         hintElem9 = "Elem9Cat3";
         hintElem10 = "Elem10Cat3";
 
-        textElem11 = "";
-        textElem12 = "";
-        textElem13 = "";
-        textElem14 = "";
-        textElem15 = "";
+        textElem11 = "11";
+        textElem12 = "12";
+        textElem13 = "13";
+        textElem14 = "14";
+        textElem15 = "15";
         hintElem11 = "Elem11Cat3";
         hintElem12 = "Elem12Cat3";
         hintElem13 = "Elem13Cat3";

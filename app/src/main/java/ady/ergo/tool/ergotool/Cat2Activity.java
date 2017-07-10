@@ -100,22 +100,24 @@ public class Cat2Activity extends AppCompatActivity {
 
         loadState();
         loadTVActiveCat();
-        setElementActivation();
+        //setElementActivation();
     }
 
     private void onBtnAction() {
         saveBtnState();
         saveEditTextValue();
+        loadTVActiveCat();
 
-        dataoutput.updateOutputLine();
-        String outputLine = dataoutput.getOutputLine();
         if (dataoutput.isRunning()){
+            dataoutput.updateOutputLine();
+            String outputLine = dataoutput.getOutputLine();
+
             dataoutput.addFullFile(outputLine);
-            Toast.makeText(getApplicationContext(), outputLine, Toast.LENGTH_SHORT).show();
+            dataoutput.cleanOutputLine();
+            Toast.makeText(getApplicationContext(), "Saved!", Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(getApplicationContext(), "Not running yet", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Not running yet!", Toast.LENGTH_SHORT).show();
         }
-        dataoutput.cleanOutputLine();
     }
 
     public void onClickBtnC2versConf(View view) {
@@ -269,7 +271,7 @@ public class Cat2Activity extends AppCompatActivity {
         btnC2versC2.setText(datacategory.getTextCat2());
         btnC2versC3.setText(datacategory.getTextCat3());
 
-        if(dataoutput.isRunning()){
+        /*if(dataoutput.isRunning()){
             disableEditTextModification(textElem1);
             disableEditTextModification(textElem2);
             disableEditTextModification(textElem3);
@@ -301,7 +303,7 @@ public class Cat2Activity extends AppCompatActivity {
             enableEditTextModification(textElem13);
             enableEditTextModification(textElem14);
             enableEditTextModification(textElem15);
-        }
+        }*/
     }
 
     private void loadTVActiveCat(){
@@ -319,7 +321,7 @@ public class Cat2Activity extends AppCompatActivity {
         editText.setFocusable(false);
     }
 
-    private void setElementActivation() {
+    public void setElementActivation() {
         if(dataoutput.isRunning()){
             setDisplay(textElem1, btnElem1);
             setDisplay(textElem2, btnElem2);

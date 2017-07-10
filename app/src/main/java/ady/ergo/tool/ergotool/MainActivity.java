@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,8 +18,14 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import static ady.ergo.tool.ergotool.R.layout.activity_main;
 
@@ -47,26 +54,26 @@ public class MainActivity extends AppCompatActivity {
         DataCatTrois.getInstance().initDataCatTrois();
         DataOutput.getInstance().initDataOutput();
 
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        /*SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putBoolean("isSentable", dataoutput.isSentable());
-        editor.commit();*/
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
         datacatun = DataCatUn.getInstance();
         datacatdeux = DataCatDeux.getInstance();
         datacattrois = DataCatTrois.getInstance();
         datacategory = DataCategory.getInstance();
         dataoutput = DataOutput.getInstance();
+
+        //loadPreferences();
+        
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        //savePreferences();
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
 
         if(!dataoutput.isRunning()){
             findViewById(R.id.btnStart).setBackgroundColor(Color.GREEN);
@@ -74,10 +81,6 @@ public class MainActivity extends AppCompatActivity {
             findViewById(R.id.btnStart).setBackgroundColor(Color.WHITE);
         }
 
-        /*if(!dataoutput.isSentable()) {
-            SharedPreferences sharedPref = MainActivity.this.getPreferences(Context.MODE_PRIVATE);
-            dataoutput.setIsSentable(sharedPref.getBoolean("isSentable", false));
-        }*/
     }
 
     public void onClickBtnConf(View view) {
@@ -100,26 +103,20 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int whichButton) {
                     cleanFile();
-                    if(!isRunning && dataoutput.updateHeader()) {
+                    if(!isRunning) {
                         launchAnalysis();
                     }else {
-                        if(isRunning)
-                            Toast.makeText(getApplicationContext(), "Déjà lancé, aller dans CONFIGURATION", Toast.LENGTH_SHORT).show();
-                        else
-                            Toast.makeText(getApplicationContext(), "Finir de configurer avant de commencer", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Déjà lancé, aller dans CONFIGURATION", Toast.LENGTH_SHORT).show();
                     }
                 }
             });
             b.setNegativeButton("CANCEL", null);
             b.show();
         }else{
-            if(!isRunning && dataoutput.updateHeader()) {
+            if(!isRunning) {
                 launchAnalysis();
             }else {
-                if(isRunning)
-                    Toast.makeText(getApplicationContext(), "Déjà lancé, aller dans CONFIGURATION", Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(getApplicationContext(), "Finir de configurer avant de commencer", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Déjà lancé, aller dans CONFIGURATION", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -151,27 +148,87 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void savePreferences(){
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putBoolean("isSentable", dataoutput.isSentable());
+        editor.putBoolean("isRunning", dataoutput.isRunning());
+        editor.putString("emailAddress", ( (EditText) findViewById(R.id.emailAddress) ).getText().toString());
+
+        editor.putString("NameCat1", datacategory.getTextCat1());
+        editor.putString("NameCat2", datacategory.getTextCat2());
+        editor.putString("NameCat3", datacategory.getTextCat3());
+
+        editor.putLong("InitTime", dataoutput.getInitTime());
+        editor.putString("AnalysisMemory", serialize(dataoutput.getFullFile()));   //tocheck
+        Toast.makeText(getApplicationContext(), dataoutput.getFullFile().toString(), Toast.LENGTH_SHORT).show();
+        editor.commit();
+    }
+
+    private void loadPreferences(){
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        if(sharedPref.contains("isSentable")) {
+            dataoutput.setIsSentable(sharedPref.getBoolean("isSentable", false));
+        }
+        if(sharedPref.contains("isRunning")) {
+            dataoutput.setIsRunning(sharedPref.getBoolean("isRunning", false));
+        }
+        if(sharedPref.contains("emailAddress")) {
+            ((EditText) findViewById(R.id.emailAddress)).setText(sharedPref.getString("emailAddress", ""));
+        }
+        if(sharedPref.contains("NameCat1")) {
+            datacategory.setTextCat1(sharedPref.getString("NameCat1", ""));
+        }
+        if(sharedPref.contains("NameCat2")) {
+            datacategory.setTextCat2(sharedPref.getString("NameCat2", ""));
+        }
+        if(sharedPref.contains("NameCat3")) {
+            datacategory.setTextCat3(sharedPref.getString("NameCat3", ""));
+        }
+        if(sharedPref.contains("InitTime")) {
+            dataoutput.setInitTime(sharedPref.getLong("InitTime", System.currentTimeMillis()));
+        }
+        /*if(sharedPref.contains("AnalysisMemory")) {
+            dataoutput.setFullFile(deSerialize(sharedPref.getString("AnalysisMemory","")));  //tocheck
+            Toast.makeText(getApplicationContext(), dataoutput.getFullFile().toString(), Toast.LENGTH_SHORT).show();
+        }*/
+    }
+
+    public String serialize(ArrayList<String> list){
+        StringBuilder sb = new StringBuilder();
+        for (String s : list)
+        {
+            sb.append(s);
+            sb.append("\t");
+        }
+        return sb.toString();
+    }
+
+    public ArrayList deSerialize(String list){
+        ArrayList<String> output = new ArrayList<String>(Arrays.asList(list.split(",")));
+        return output;
+    }
+
     private void launchAnalysis(){
         dataoutput.setInitTime(System.currentTimeMillis());
-        String header = dataoutput.getHeader();
-        dataoutput.initFullFile(header);
-        //Toast.makeText(getApplicationContext(), dataoutput.getFullFile().get(0).toString(), Toast.LENGTH_SHORT).show();
-        Toast.makeText(getApplicationContext(), "C'est parti !", Toast.LENGTH_SHORT).show();
+
         dataoutput.setIsRunning(true);
         dataoutput.setIsSentable(false);
+        Toast.makeText(getApplicationContext(), "C'est parti !", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(MainActivity.this, ChooseActivity.class);
         startActivity(intent);
     }
 
     private void cleanFile(){
         dataoutput.clean();
+
         getApplicationContext().deleteFile(filename);
         dataoutput.setIsSentable(false);
         Toast.makeText(getApplicationContext(), "Cleaning OK", Toast.LENGTH_SHORT).show();
     }
 
     public void sendMail() {
-        File internalFile = getApplicationContext().getFileStreamPath(filename);
+        //File internalFile = getApplicationContext().getFileStreamPath(filename);
 
         Intent emailIntent = new Intent(Intent.ACTION_SEND);
 // set the type to 'email'

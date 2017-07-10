@@ -83,7 +83,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@color/Cat1">
 
                         <Button
                             android:id="@+id/btnC3versC1"
@@ -106,7 +108,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@color/Cat2">
 
                         <Button
                             android:id="@+id/btnC3versC2"
@@ -129,7 +133,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:background="@color/Cat3">
 
                         <Button
                             android:id="@+id/btnC3versC3"
