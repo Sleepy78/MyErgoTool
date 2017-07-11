@@ -4,7 +4,9 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -54,7 +56,7 @@ public class ChooseActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
         saveBtnText();
-
+        savePreferences();
     }
 
     private void setEditBtnActivation() {
@@ -223,5 +225,16 @@ public class ChooseActivity extends AppCompatActivity {
         tvCat1.setText(datacategory.getTextTVCat1(datacatun));
         tvCat2.setText(datacategory.getTextTVCat2(datacatdeux));
         tvCat3.setText(datacategory.getTextTVCat3(datacattrois));
+    }
+
+    private void savePreferences(){
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(ChooseActivity.this);
+        SharedPreferences.Editor editor = sharedPref.edit();
+
+        editor.putString("NameCat1", datacategory.getTextCat1());
+        editor.putString("NameCat2", datacategory.getTextCat2());
+        editor.putString("NameCat3", datacategory.getTextCat3());
+
+        editor.commit();
     }
 }

@@ -8,6 +8,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.ArrayList;
 
@@ -82,42 +83,42 @@ public class DataOutput {
         //All about Cat2Activity
         header+=datacat.getTextCat2() + delimitor;
 
-        setElemHeader(datacatdeux.getTextElem1());
-        setElemHeader(datacatdeux.getTextElem2());
-        setElemHeader(datacatdeux.getTextElem3());
-        setElemHeader(datacatdeux.getTextElem4());
-        setElemHeader(datacatdeux.getTextElem5());
-        setElemHeader(datacatdeux.getTextElem6());
-        setElemHeader(datacatdeux.getTextElem7());
-        setElemHeader(datacatdeux.getTextElem8());
-        setElemHeader(datacatdeux.getTextElem9());
-        setElemHeader(datacatdeux.getTextElem10());
-        setElemHeader(datacatdeux.getTextElem11());
-        setElemHeader(datacatdeux.getTextElem12());
-        setElemHeader(datacatdeux.getTextElem13());
-        setElemHeader(datacatdeux.getTextElem14());
-        setElemHeader(datacatdeux.getTextElem15());
+        setElemHeader(datacatdeux.getTextElem(1));
+        setElemHeader(datacatdeux.getTextElem(2));
+        setElemHeader(datacatdeux.getTextElem(3));
+        setElemHeader(datacatdeux.getTextElem(4));
+        setElemHeader(datacatdeux.getTextElem(5));
+        setElemHeader(datacatdeux.getTextElem(6));
+        setElemHeader(datacatdeux.getTextElem(7));
+        setElemHeader(datacatdeux.getTextElem(8));
+        setElemHeader(datacatdeux.getTextElem(9));
+        setElemHeader(datacatdeux.getTextElem(10));
+        setElemHeader(datacatdeux.getTextElem(11));
+        setElemHeader(datacatdeux.getTextElem(12));
+        setElemHeader(datacatdeux.getTextElem(13));
+        setElemHeader(datacatdeux.getTextElem(14));
+        setElemHeader(datacatdeux.getTextElem(15));
 
         header+=" " + delimitor;   //Needed for blank in csv output
 
         //All about Cat3Activity
         header+=datacat.getTextCat3() + delimitor;
 
-        setElemHeader(datacattrois.getTextElem1());
-        setElemHeader(datacattrois.getTextElem2());
-        setElemHeader(datacattrois.getTextElem3());
-        setElemHeader(datacattrois.getTextElem4());
-        setElemHeader(datacattrois.getTextElem5());
-        setElemHeader(datacattrois.getTextElem6());
-        setElemHeader(datacattrois.getTextElem7());
-        setElemHeader(datacattrois.getTextElem8());
-        setElemHeader(datacattrois.getTextElem9());
-        setElemHeader(datacattrois.getTextElem10());
-        setElemHeader(datacattrois.getTextElem11());
-        setElemHeader(datacattrois.getTextElem12());
-        setElemHeader(datacattrois.getTextElem13());
-        setElemHeader(datacattrois.getTextElem14());
-        setElemHeader(datacattrois.getTextElem15());
+        setElemHeader(datacattrois.getTextElem(1));
+        setElemHeader(datacattrois.getTextElem(2));
+        setElemHeader(datacattrois.getTextElem(3));
+        setElemHeader(datacattrois.getTextElem(4));
+        setElemHeader(datacattrois.getTextElem(5));
+        setElemHeader(datacattrois.getTextElem(6));
+        setElemHeader(datacattrois.getTextElem(7));
+        setElemHeader(datacattrois.getTextElem(8));
+        setElemHeader(datacattrois.getTextElem(9));
+        setElemHeader(datacattrois.getTextElem(10));
+        setElemHeader(datacattrois.getTextElem(11));
+        setElemHeader(datacattrois.getTextElem(12));
+        setElemHeader(datacattrois.getTextElem(13));
+        setElemHeader(datacattrois.getTextElem(14));
+        setElemHeader(datacattrois.getTextElem(15));
 
         header+=" " + delimitor;   //Needed for blank in csv output
 
@@ -154,40 +155,40 @@ public class DataOutput {
         outputline+="" + delimitor; //space for empty column
         outputline+="" + delimitor; //space for Cat2 columns
 
-        setElemOutputLine(datacatdeux.getBtnElem1(),"15");
-        setElemOutputLine(datacatdeux.getBtnElem2(),"20");
-        setElemOutputLine(datacatdeux.getBtnElem3(),"25");
-        setElemOutputLine(datacatdeux.getBtnElem4(),"30");
-        setElemOutputLine(datacatdeux.getBtnElem5(),"35");
-        setElemOutputLine(datacatdeux.getBtnElem6(),"40");
-        setElemOutputLine(datacatdeux.getBtnElem7(),"45");
-        setElemOutputLine(datacatdeux.getBtnElem8(),"50");
-        setElemOutputLine(datacatdeux.getBtnElem9(),"55");
-        setElemOutputLine(datacatdeux.getBtnElem10(),"60");
-        setElemOutputLine(datacatdeux.getBtnElem11(),"65");
-        setElemOutputLine(datacatdeux.getBtnElem12(),"70");
-        setElemOutputLine(datacatdeux.getBtnElem13(),"75");
-        setElemOutputLine(datacatdeux.getBtnElem14(),"80");
-        setElemOutputLine(datacatdeux.getBtnElem15(),"85");
+        setElemOutputLine(datacatdeux.getBtnElem(1),"15");
+        setElemOutputLine(datacatdeux.getBtnElem(2),"20");
+        setElemOutputLine(datacatdeux.getBtnElem(3),"25");
+        setElemOutputLine(datacatdeux.getBtnElem(4),"30");
+        setElemOutputLine(datacatdeux.getBtnElem(5),"35");
+        setElemOutputLine(datacatdeux.getBtnElem(6),"40");
+        setElemOutputLine(datacatdeux.getBtnElem(7),"45");
+        setElemOutputLine(datacatdeux.getBtnElem(8),"50");
+        setElemOutputLine(datacatdeux.getBtnElem(9),"55");
+        setElemOutputLine(datacatdeux.getBtnElem(10),"60");
+        setElemOutputLine(datacatdeux.getBtnElem(11),"65");
+        setElemOutputLine(datacatdeux.getBtnElem(12),"70");
+        setElemOutputLine(datacatdeux.getBtnElem(13),"75");
+        setElemOutputLine(datacatdeux.getBtnElem(14),"80");
+        setElemOutputLine(datacatdeux.getBtnElem(15),"85");
 
         outputline+="" + delimitor; //space for empty column
         outputline+="" + delimitor; //space for Cat3 columns
 
-        setElemOutputLine(datacattrois.getBtnElem1(),"150");
-        setElemOutputLine(datacattrois.getBtnElem2(),"200");
-        setElemOutputLine(datacattrois.getBtnElem3(),"250");
-        setElemOutputLine(datacattrois.getBtnElem4(),"300");
-        setElemOutputLine(datacattrois.getBtnElem5(),"350");
-        setElemOutputLine(datacattrois.getBtnElem6(),"400");
-        setElemOutputLine(datacattrois.getBtnElem7(),"450");
-        setElemOutputLine(datacattrois.getBtnElem8(),"500");
-        setElemOutputLine(datacattrois.getBtnElem9(),"550");
-        setElemOutputLine(datacattrois.getBtnElem10(),"600");
-        setElemOutputLine(datacattrois.getBtnElem11(),"650");
-        setElemOutputLine(datacattrois.getBtnElem12(),"700");
-        setElemOutputLine(datacattrois.getBtnElem13(),"750");
-        setElemOutputLine(datacattrois.getBtnElem14(),"800");
-        setElemOutputLine(datacattrois.getBtnElem15(),"850");
+        setElemOutputLine(datacattrois.getBtnElem(1),"150");
+        setElemOutputLine(datacattrois.getBtnElem(2),"200");
+        setElemOutputLine(datacattrois.getBtnElem(3),"250");
+        setElemOutputLine(datacattrois.getBtnElem(4),"300");
+        setElemOutputLine(datacattrois.getBtnElem(5),"350");
+        setElemOutputLine(datacattrois.getBtnElem(6),"400");
+        setElemOutputLine(datacattrois.getBtnElem(7),"450");
+        setElemOutputLine(datacattrois.getBtnElem(8),"500");
+        setElemOutputLine(datacattrois.getBtnElem(9),"550");
+        setElemOutputLine(datacattrois.getBtnElem(10),"600");
+        setElemOutputLine(datacattrois.getBtnElem(11),"650");
+        setElemOutputLine(datacattrois.getBtnElem(12),"700");
+        setElemOutputLine(datacattrois.getBtnElem(13),"750");
+        setElemOutputLine(datacattrois.getBtnElem(14),"800");
+        setElemOutputLine(datacattrois.getBtnElem(15),"850");
 
         return outputline;
     }
@@ -259,6 +260,20 @@ public class DataOutput {
         } catch (IOException e) {
             throw new IOException();
         }
+    }
 
+    public String serialize(ArrayList<String> list){
+        StringBuilder sb = new StringBuilder();
+        for (String s : list)
+        {
+            sb.append(s);
+            sb.append("\t");
+        }
+        return sb.toString();
+    }
+
+    public ArrayList deSerialize(String list){
+        ArrayList<String> output = new ArrayList<String>(Arrays.asList(list.split(",")));
+        return output;
     }
 }

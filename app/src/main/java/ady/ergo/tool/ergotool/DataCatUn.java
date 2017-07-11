@@ -19,7 +19,7 @@ public class DataCatUn {
 
     public void initDataCatUn(){
         for(int i=1;i<=15;i++){
-            elemCatUn.add(new Element(1,i));
+            elemCatUn.add(new Element(i));
         }
     }
 }

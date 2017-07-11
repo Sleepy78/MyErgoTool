@@ -60,14 +60,14 @@ public class MainActivity extends AppCompatActivity {
         datacategory = DataCategory.getInstance();
         dataoutput = DataOutput.getInstance();
 
-        //loadPreferences();
-        
+        loadPreferences();
+
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        //savePreferences();
+        savePreferences();
 
     }
 
@@ -160,8 +160,8 @@ public class MainActivity extends AppCompatActivity {
         editor.putString("NameCat3", datacategory.getTextCat3());
 
         editor.putLong("InitTime", dataoutput.getInitTime());
-        editor.putString("AnalysisMemory", serialize(dataoutput.getFullFile()));   //tocheck
-        Toast.makeText(getApplicationContext(), dataoutput.getFullFile().toString(), Toast.LENGTH_SHORT).show();
+        //editor.putString("AnalysisMemory", serialize(dataoutput.getFullFile()));   //tocheck
+
         editor.commit();
     }
 
@@ -188,26 +188,37 @@ public class MainActivity extends AppCompatActivity {
         if(sharedPref.contains("InitTime")) {
             dataoutput.setInitTime(sharedPref.getLong("InitTime", System.currentTimeMillis()));
         }
-        /*if(sharedPref.contains("AnalysisMemory")) {
-            dataoutput.setFullFile(deSerialize(sharedPref.getString("AnalysisMemory","")));  //tocheck
-            Toast.makeText(getApplicationContext(), dataoutput.getFullFile().toString(), Toast.LENGTH_SHORT).show();
-        }*/
-    }
-
-    public String serialize(ArrayList<String> list){
-        StringBuilder sb = new StringBuilder();
-        for (String s : list)
-        {
-            sb.append(s);
-            sb.append("\t");
+        for(int i=1 ; i<=15 ; i++){
+            if(sharedPref.contains("Cat1Elem" + i + "TBTN")) {
+                datacatun.setBtnElem(i,sharedPref.getBoolean("Cat1Elem" + i + "TBTN", false));
+            }
+            if(sharedPref.contains("Cat1Elem" + i + "TextElem")) {
+                datacatun.setTextElem(i,sharedPref.getString("Cat1Elem" + i + "TextElem", ""));
+            }
         }
-        return sb.toString();
+        for(int i=1 ; i<=15 ; i++){
+            if(sharedPref.contains("Cat2Elem" + i + "TBTN")) {
+                datacatdeux.setBtnElem(i,sharedPref.getBoolean("Cat2Elem" + i + "TBTN", false));
+            }
+            if(sharedPref.contains("Cat2Elem" + i + "TextElem")) {
+                datacatdeux.setTextElem(i,sharedPref.getString("Cat2Elem" + i + "TextElem", ""));
+            }
+        }
+        for(int i=1 ; i<=15 ; i++){
+            if(sharedPref.contains("Cat3Elem" + i + "TBTN")) {
+                datacattrois.setBtnElem(i,sharedPref.getBoolean("Cat3Elem" + i + "TBTN", false));
+            }
+            if(sharedPref.contains("Cat3Elem" + i + "TextElem")) {
+                datacattrois.setTextElem(i,sharedPref.getString("Cat3Elem" + i + "TextElem", ""));
+            }
+        }
+
+        if(sharedPref.contains("AnalysisMemory")) {
+            dataoutput.setFullFile(dataoutput.deSerialize(sharedPref.getString("AnalysisMemory","")));  //tocheck
+        }
     }
 
-    public ArrayList deSerialize(String list){
-        ArrayList<String> output = new ArrayList<String>(Arrays.asList(list.split(",")));
-        return output;
-    }
+
 
     private void launchAnalysis(){
         dataoutput.setInitTime(System.currentTimeMillis());
