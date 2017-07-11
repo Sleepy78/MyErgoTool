@@ -22,5 +22,12 @@ public class DataCatTrois {
             elemCatTrois.add(new Element(i));
         }
     }
+
+    public void cleanDataCatTrois(){
+        elemCatTrois.clear();
+        for(int i=1;i<=15;i++){
+            elemCatTrois.add(new Element(i));
+        }
+    }
 }
 

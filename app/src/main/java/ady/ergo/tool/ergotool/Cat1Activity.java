@@ -108,7 +108,7 @@ public class Cat1Activity extends AppCompatActivity {
     private void saveEditTextValue() {
         //Save text state
         for(int i=1;i<=listTextElem.size();i++){
-            datacatun.setTextElem(i,listTextElem.get(i-1).getText().toString());
+            datacatun.setTextElem(i,listTextElem.get(i-1).getText().toString().replace(",","_"));
         }
     }
 

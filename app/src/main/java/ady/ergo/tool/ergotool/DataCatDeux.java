@@ -22,4 +22,11 @@ public class DataCatDeux {
             elemCatDeux.add(new Element(i));
         }
     }
+
+    public void cleanDataCatDeux(){
+        elemCatDeux.clear();
+        for(int i=1;i<=15;i++){
+            elemCatDeux.add(new Element(i));
+        }
+    }
 }

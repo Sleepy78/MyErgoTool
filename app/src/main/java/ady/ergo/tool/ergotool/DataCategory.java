@@ -29,9 +29,9 @@ public class DataCategory {
     public static DataCategory getInstance() {return holder;}
 
     public void initCategory(){
-        textCat1="Cat1111";
-        textCat2="Cat2222";
-        textCat3="Cat3333";
+        textCat1="Cat1";
+        textCat2="Cat2";
+        textCat3="Cat3";
         textTVCat1="";
         textTVCat2="";
         textTVCat3="";

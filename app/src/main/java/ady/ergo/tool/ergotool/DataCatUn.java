@@ -22,4 +22,11 @@ public class DataCatUn {
             elemCatUn.add(new Element(i));
         }
     }
+
+    public void cleanDataCatUn(){
+        elemCatUn.clear();
+        for(int i=1;i<=15;i++){
+            elemCatUn.add(new Element(i));
+        }
+    }
 }

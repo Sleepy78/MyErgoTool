@@ -116,7 +116,7 @@ public class ChooseActivity extends AppCompatActivity {
         b.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
-                datacategory.setTextCat1(input.getText().toString());
+                datacategory.setTextCat1(input.getText().toString().replace(",","_"));
                 loadBtnText();
             }
         });
@@ -133,7 +133,7 @@ public class ChooseActivity extends AppCompatActivity {
         b.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
-                datacategory.setTextCat2(input.getText().toString());
+                datacategory.setTextCat2(input.getText().toString().replace(",","_"));
                 loadBtnText();
             }
         });
@@ -150,7 +150,7 @@ public class ChooseActivity extends AppCompatActivity {
         b.setPositiveButton("OK", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int whichButton) {
-                datacategory.setTextCat3(input.getText().toString());
+                datacategory.setTextCat3(input.getText().toString().replace(",","_"));
                 loadBtnText();
             }
         });
@@ -168,7 +168,7 @@ public class ChooseActivity extends AppCompatActivity {
     }
 
 
-    private boolean writeFile(){
+    /*private boolean writeFile(){
         //dataoutput.initFullFile(header);
 
         String outputLine = dataoutput.updateOutputLine();                  //update outputline one last time
@@ -195,7 +195,7 @@ public class ChooseActivity extends AppCompatActivity {
         }
 
         return false;
-    }
+    }*/
 
     private void initObjects() {
         btnCat1 = (Button)findViewById(R.id.btnCat1);
