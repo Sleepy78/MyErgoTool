@@ -26,7 +26,7 @@ public class Element {
     }
 
     public Element(int elem){
-        textElem = String.valueOf(elem);
+        textElem = "E".concat(String.valueOf(elem));
         hintElem = "Element name";
     }
 }
