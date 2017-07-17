@@ -54,14 +54,6 @@
             android:onClick="onClickBtnClean"
             android:text="Clean" />
 
-        <Button
-            android:id="@+id/btnDynamicTry"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:onClick="onClickDynamicTry"
-            android:text="DynamicTry"
-            android:visibility="gone" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

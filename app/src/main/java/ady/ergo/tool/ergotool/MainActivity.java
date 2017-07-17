@@ -78,11 +78,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void onClickDynamicTry(View view) {
-        Intent intent = new Intent(MainActivity.this, DynamicTry.class);
-        startActivity(intent);
-    }
-
     public void onClickBtnStart(View view) {
         boolean isSentable = dataoutput.isSentable();
         final boolean isRunning  = dataoutput.isRunning();
@@ -166,6 +161,9 @@ public class MainActivity extends AppCompatActivity {
         if(sharedPref.contains("isRunning")) {
             dataoutput.setIsRunning(sharedPref.getBoolean("isRunning", false));
         }
+        if(sharedPref.contains("isPaused")) {
+            dataoutput.setIsPaused(sharedPref.getBoolean("isPaused", false));
+        }
         if(sharedPref.contains("emailAddress")) {
             ((EditText) findViewById(R.id.emailAddress)).setText(sharedPref.getString("emailAddress", ""));
         }
@@ -180,6 +178,9 @@ public class MainActivity extends AppCompatActivity {
         }
         if(sharedPref.contains("InitTime")) {
             dataoutput.setInitTime(sharedPref.getLong("InitTime", System.currentTimeMillis()));
+        }
+        if(sharedPref.contains("delay")) {
+            dataoutput.setDelay(sharedPref.getLong("delay", 0));
         }
         for(int i=1 ; i<=15 ; i++){
             if(sharedPref.contains("Cat1Elem" + i + "TBTN")) {
@@ -211,12 +212,11 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-
-
     private void launchAnalysis(){
         dataoutput.setInitTime(System.currentTimeMillis());
 
         dataoutput.setIsRunning(true);
+        dataoutput.setIsPaused(false);
         dataoutput.setIsSentable(false);
         Toast.makeText(getApplicationContext(), "C'est parti !", Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(MainActivity.this, ChooseActivity.class);

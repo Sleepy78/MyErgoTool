@@ -50,7 +50,7 @@ public class Cat3Activity extends AppCompatActivity {
         saveBtnState();
         saveEditTextValue();
         savePreferences();
-        finish();
+
     }
 
     @Override
@@ -72,7 +72,7 @@ public class Cat3Activity extends AppCompatActivity {
         saveEditTextValue();
         loadTVActiveCat();
 
-        if (dataoutput.isRunning()){
+        if (dataoutput.isRunning() && !dataoutput.isPaused()){
             dataoutput.updateOutputLine();
             String outputLine = dataoutput.getOutputLine();
 
@@ -80,21 +80,24 @@ public class Cat3Activity extends AppCompatActivity {
             dataoutput.cleanOutputLine();
             Toast.makeText(getApplicationContext(), "Saved!", Toast.LENGTH_SHORT).show();
         }else{
-            Toast.makeText(getApplicationContext(), "Not running yet!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Not running !", Toast.LENGTH_SHORT).show();
         }
     }
 
     public void onClickBtnC3versConf(View view) {
         Intent intent = new Intent(Cat3Activity.this, ChooseActivity.class);
         startActivity(intent);
+        finish();
     }
     public void onClickBtnC3versC1(View view) {
         Intent intent = new Intent(Cat3Activity.this, Cat1Activity.class);
         startActivity(intent);
+        finish();
     }
     public void onClickBtnC3versC2(View view) {
         Intent intent = new Intent(Cat3Activity.this, Cat2Activity.class);
         startActivity(intent);
+        finish();
     }
 
     private void saveBtnState() {
@@ -135,7 +138,7 @@ public class Cat3Activity extends AppCompatActivity {
         tvActiveCat3Elem.setText((datacategory.getTextTVCat3(datacattrois)));
     }
 
-    private void enableEditTextModification(EditText editText){
+/*    private void enableEditTextModification(EditText editText){
         editText.setInputType(InputType.TYPE_CLASS_TEXT);
         editText.setFocusable(true);
     }
@@ -166,7 +169,7 @@ public class Cat3Activity extends AppCompatActivity {
     private void forceVisible(EditText et, ToggleButton tbtn){
         et.setVisibility(View.VISIBLE);
         tbtn.setVisibility(View.VISIBLE);
-    }
+    }*/
 
     private void savePreferences(){
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(Cat3Activity.this);
@@ -213,6 +216,10 @@ public class Cat3Activity extends AppCompatActivity {
         listTextElem.add( (EditText)findViewById(R.id.etElem13) );
         listTextElem.add( (EditText)findViewById(R.id.etElem14) );
         listTextElem.add( (EditText)findViewById(R.id.etElem15) );
+
+        for(int i=1;i<=listTextElem.size();i++){
+            listTextElem.get(i-1).setSelectAllOnFocus(true);
+        }
 
         titlecat3 = (TextView)findViewById(R.id.titleCat3);
 

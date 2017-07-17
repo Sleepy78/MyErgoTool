@@ -18,19 +18,27 @@ public class DataOutput {
 
     private ArrayList<String> fullFile;
     private boolean isRunning;
+    private boolean isPaused;
     private boolean isSentable;
     private long initTime;
+    private long delay;
     String delimitor = ";";
 
     public String getHeader() {return header;}
     public void setInitTime(long t) {initTime = t;}
     public long getInitTime() {return initTime;}
 
+    public void setDelay(long t) {delay = t;}
+    public long getDelay() {return delay;}
+
     public String getOutputLine() {return outputline;}
     public void setOutputLine(String out) {outputline = out;}
 
     public boolean isRunning() {return isRunning;}
     public void setIsRunning(boolean run) {isRunning = run;}
+
+    public boolean isPaused() {return isPaused;}
+    public void setIsPaused(boolean pause) {isPaused = pause;}
 
     public boolean isSentable() {return isSentable;}
     public void setIsSentable(boolean sentable) {isSentable = sentable;}
@@ -55,7 +63,7 @@ public class DataOutput {
         DataCategory datacat = DataCategory.getInstance();
         header="";
 
-        header+="TimeDdelay in ms" + delimitor;
+        //header+="TimeDdelay in ms" + delimitor;
         header+="Time HH:MM:SS" + delimitor;
         header+="Time Absolute" + delimitor;
 
@@ -94,9 +102,11 @@ public class DataOutput {
         DataCatDeux datacatdeux = DataCatDeux.getInstance();
         DataCatTrois datacattrois = DataCatTrois.getInstance();
 
+        delay+=getDelayInMs();
+
         outputline="";
-        outputline+=getDelay() + delimitor;
-        outputline+=getTimeHHMMSS(getDelay()) + delimitor;
+        //outputline+=getDelay() + delimitor;
+        outputline+=getTimeHHMMSS(delay) + delimitor;
         outputline+=getTime() + delimitor;
         outputline+="" + delimitor;//space for Cat1 columns
 
@@ -104,22 +114,6 @@ public class DataOutput {
         {
             outputline+=((datacatun.getBtnElem(i)) ? String.valueOf(i*0.5 +1).replace(".",",") : "") + delimitor;
         }
-
-        /*setElemOutputLine(datacatun.getBtnElem(1),"1,5");
-        setElemOutputLine(datacatun.getBtnElem(2),"2");
-        setElemOutputLine(datacatun.getBtnElem(3),"2,5");
-        setElemOutputLine(datacatun.getBtnElem(4),"3");
-        setElemOutputLine(datacatun.getBtnElem(5),"3,5");
-        setElemOutputLine(datacatun.getBtnElem(6),"4");
-        setElemOutputLine(datacatun.getBtnElem(7),"4,5");
-        setElemOutputLine(datacatun.getBtnElem(8),"5");
-        setElemOutputLine(datacatun.getBtnElem(9),"5,5");
-        setElemOutputLine(datacatun.getBtnElem(10),"6");
-        setElemOutputLine(datacatun.getBtnElem(11),"6,5");
-        setElemOutputLine(datacatun.getBtnElem(12),"7");
-        setElemOutputLine(datacatun.getBtnElem(13),"7,5");
-        setElemOutputLine(datacatun.getBtnElem(14),"8");
-        setElemOutputLine(datacatun.getBtnElem(15),"8,5");*/
 
         outputline+="" + delimitor; //space for empty column
         outputline+="" + delimitor; //space for Cat2 columns
@@ -129,22 +123,6 @@ public class DataOutput {
             outputline+=((datacatdeux.getBtnElem(i)) ? (i*5 +10) : "") + delimitor;
         }
 
-        /*setElemOutputLine(datacatdeux.getBtnElem(1),"15");
-        setElemOutputLine(datacatdeux.getBtnElem(2),"20");
-        setElemOutputLine(datacatdeux.getBtnElem(3),"25");
-        setElemOutputLine(datacatdeux.getBtnElem(4),"30");
-        setElemOutputLine(datacatdeux.getBtnElem(5),"35");
-        setElemOutputLine(datacatdeux.getBtnElem(6),"40");
-        setElemOutputLine(datacatdeux.getBtnElem(7),"45");
-        setElemOutputLine(datacatdeux.getBtnElem(8),"50");
-        setElemOutputLine(datacatdeux.getBtnElem(9),"55");
-        setElemOutputLine(datacatdeux.getBtnElem(10),"60");
-        setElemOutputLine(datacatdeux.getBtnElem(11),"65");
-        setElemOutputLine(datacatdeux.getBtnElem(12),"70");
-        setElemOutputLine(datacatdeux.getBtnElem(13),"75");
-        setElemOutputLine(datacatdeux.getBtnElem(14),"80");
-        setElemOutputLine(datacatdeux.getBtnElem(15),"85");*/
-
         outputline+="" + delimitor; //space for empty column
         outputline+="" + delimitor; //space for Cat3 columns
 
@@ -153,21 +131,6 @@ public class DataOutput {
         {
             outputline+=((datacattrois.getBtnElem(i)) ? (i*50 +100) : "") + delimitor;
         }
-        /*setElemOutputLine(datacattrois.getBtnElem(1),"150");
-        setElemOutputLine(datacattrois.getBtnElem(2),"200");
-        setElemOutputLine(datacattrois.getBtnElem(3),"250");
-        setElemOutputLine(datacattrois.getBtnElem(4),"300");
-        setElemOutputLine(datacattrois.getBtnElem(5),"350");
-        setElemOutputLine(datacattrois.getBtnElem(6),"400");
-        setElemOutputLine(datacattrois.getBtnElem(7),"450");
-        setElemOutputLine(datacattrois.getBtnElem(8),"500");
-        setElemOutputLine(datacattrois.getBtnElem(9),"550");
-        setElemOutputLine(datacattrois.getBtnElem(10),"600");
-        setElemOutputLine(datacattrois.getBtnElem(11),"650");
-        setElemOutputLine(datacattrois.getBtnElem(12),"700");
-        setElemOutputLine(datacattrois.getBtnElem(13),"750");
-        setElemOutputLine(datacattrois.getBtnElem(14),"800");
-        setElemOutputLine(datacattrois.getBtnElem(15),"850");*/
 
         return outputline;
     }
@@ -180,22 +143,27 @@ public class DataOutput {
         if (!fullFile.isEmpty()) {
             fullFile.clear();
         }
+        delay=0;
     }
 
     public void initDataOutput(){
         header = "";
         outputline = "";
         isRunning = false;
+        isPaused = false;
         isSentable = false;
+        delay=0;
     }
 
     private String getTime(){
             SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
             return dateFormat.format(new Date());
     }
-    private long getDelay(){
+
+    private long getDelayInMs(){
         return System.currentTimeMillis() - initTime;
     }
+
     private String getTimeHHMMSS(long time){
         int seconds = (int) (time / 1000) % 60 ;
         int minutes = (int) ((time / (1000*60)) % 60);
@@ -209,11 +177,11 @@ public class DataOutput {
         //}
     }
 
-    public void setElemOutputLine(boolean elemToCheck, String weight){
+/*    public void setElemOutputLine(boolean elemToCheck, String weight){
         if(elemToCheck){
             outputline+=weight + delimitor;
         }
-    }
+    }*/
 
     public boolean writeFile(Activity act) throws IOException{
         String FILENAME = "ErgoTool.csv";

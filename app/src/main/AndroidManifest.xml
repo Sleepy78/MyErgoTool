@@ -28,7 +28,6 @@
         <activity
             android:name=".Cat3Activity"
             android:launchMode="singleTask" />
-        <activity android:name=".DynamicTry"/>
     </application>
 
 </manifest>

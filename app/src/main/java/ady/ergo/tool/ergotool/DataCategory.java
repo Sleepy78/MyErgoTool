@@ -84,7 +84,8 @@ public class DataCategory {
         if ( datacatun.getBtnElem(15) ){
             textTVCat1+=datacatun.getTextElem(15) + "   ";
         }
-        textTVCat1.trim();
+        textTVCat1 = textTVCat1.trim().replace("   ",", ");
+
     }
 
     private void evalCat2(DataCatDeux datacatdeux) {
@@ -134,7 +135,7 @@ public class DataCategory {
         if ( datacatdeux.getBtnElem(15) ){
             textTVCat2+=datacatdeux.getTextElem(15) + "   ";
         }
-        textTVCat2.trim();
+        textTVCat2 = textTVCat2.trim().replace("   ",", ");
     }
     private void evalCat3(DataCatTrois datacattrois) {
         textTVCat3="";
@@ -183,6 +184,6 @@ public class DataCategory {
         if ( datacattrois.getBtnElem(15) ){
             textTVCat3+=datacattrois.getTextElem(15) + "   ";
         }
-        textTVCat3.trim();
+        textTVCat3 = textTVCat3.trim().replace("   ",", ");
     }
 }

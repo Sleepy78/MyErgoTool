@@ -47,6 +47,7 @@ public class ChooseActivity extends AppCompatActivity {
         datacategory = DataCategory.getInstance();
 
         setStopColor();
+        setPauseColor();
         loadBtnText();
         loadTVCat();
         setEditBtnActivation(); //hide edit button if running
@@ -89,21 +90,54 @@ public class ChooseActivity extends AppCompatActivity {
     public void onclickBtnStop(View view) {
         boolean isRunning = dataoutput.isRunning();
         if(isRunning) {
+            AlertDialog.Builder b = new AlertDialog.Builder(this);
+            b.setMessage("Are you sure you want to stop the analysis ?");
+            b.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int whichButton) {
+                    try {
+                        dataoutput.writeFile(ChooseActivity.this);
+                    } catch (FileNotFoundException e) {
+                        Toast.makeText(ChooseActivity.this, "File not found!", Toast.LENGTH_SHORT).show();
+                    } catch (IOException e) {
+                        Toast.makeText(ChooseActivity.this, "Cannot write in file!", Toast.LENGTH_SHORT).show();
+                    }
+                    dataoutput.setIsRunning(false);
+                    dataoutput.setIsPaused(false);
+                    dataoutput.setIsSentable(true);
+                    setStopColor();
+                    setPauseColor();
 
-            try {
-                dataoutput.writeFile(ChooseActivity.this);
-            } catch (FileNotFoundException e) {
-                Toast.makeText(ChooseActivity.this, "File not found!", Toast.LENGTH_SHORT).show();
-            } catch (IOException e) {
-                Toast.makeText(ChooseActivity.this, "Cannot write in file!", Toast.LENGTH_SHORT).show();
-            }
-            dataoutput.setIsRunning(false);
-            dataoutput.setIsSentable(true);
-            setStopColor();
-
-            finish();
+                    finish();
+                }
+            });
+            b.setNegativeButton("CANCEL", null);
+            b.show();
         }else{
-            Toast.makeText(getApplicationContext(), "Tu dois d'abord lancer l'analyse", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Analysis must be launched first.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void onclickBtnPause(View view) {
+        boolean isRunning = dataoutput.isRunning();
+        boolean isPaused = dataoutput.isPaused();
+        if(isRunning) {
+            if(!isPaused) {
+                dataoutput.setIsPaused(true);
+                Toast.makeText(ChooseActivity.this, "Analysis paused!", Toast.LENGTH_SHORT).show();
+            }else{
+                dataoutput.setIsPaused(false);
+                dataoutput.setInitTime(System.currentTimeMillis());
+                dataoutput.updateOutputLine();
+                String outputLine = dataoutput.getOutputLine();
+                dataoutput.addFullFile(outputLine);
+                dataoutput.cleanOutputLine();
+                Toast.makeText(getApplicationContext(), "Saved!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ChooseActivity.this, "Analysis restarted!", Toast.LENGTH_SHORT).show();
+            }
+            setPauseColor();
+        }else{
+            Toast.makeText(getApplicationContext(), "Analysis must be launched first.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -164,6 +198,22 @@ public class ChooseActivity extends AppCompatActivity {
             findViewById(R.id.btnStop).setBackgroundColor(Color.RED);
         }else{
             findViewById(R.id.btnStop).setBackgroundColor(Color.WHITE);
+        }
+    }
+
+    private void setPauseColor() {
+        //Change stop color depending on isRunning state
+        if(dataoutput.isPaused()){
+            findViewById(R.id.btnPause).setBackgroundColor(Color.GREEN);
+            ( (Button) findViewById(R.id.btnPause) ).setText("Continue analysis");
+        }else{
+            findViewById(R.id.btnPause).setBackgroundColor(Color.RED);
+            ( (Button) findViewById(R.id.btnPause) ).setText("Pause");
+        }
+        if(!dataoutput.isRunning()){
+            findViewById(R.id.btnPause).setVisibility(View.GONE);
+        }else{
+            findViewById(R.id.btnPause).setVisibility(View.VISIBLE);
         }
     }
 
@@ -230,10 +280,11 @@ public class ChooseActivity extends AppCompatActivity {
     private void savePreferences(){
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(ChooseActivity.this);
         SharedPreferences.Editor editor = sharedPref.edit();
-
+        editor.putBoolean("isPaused", dataoutput.isPaused());
         editor.putString("NameCat1", datacategory.getTextCat1());
         editor.putString("NameCat2", datacategory.getTextCat2());
         editor.putString("NameCat3", datacategory.getTextCat3());
+        editor.putLong("delay", dataoutput.getDelay());
 
         editor.commit();
     }
