@@ -2,6 +2,7 @@ package ady.ergo.tool.ergotool;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -62,6 +63,7 @@ public class Cat3Activity extends AppCompatActivity {
         datacattrois = DataCatTrois.getInstance();
         datacategory = DataCategory.getInstance();
 
+        setPauseColor();
         loadState();
         loadTVActiveCat();
         //setElementActivation();
@@ -98,6 +100,44 @@ public class Cat3Activity extends AppCompatActivity {
         Intent intent = new Intent(Cat3Activity.this, Cat2Activity.class);
         startActivity(intent);
         finish();
+    }
+
+    public void onclickBtnPause(View view) {
+        boolean isRunning = dataoutput.isRunning();
+        boolean isPaused = dataoutput.isPaused();
+        if(isRunning) {
+            if(!isPaused) {
+                dataoutput.setIsPaused(true);
+                Toast.makeText(Cat3Activity.this, "Analysis paused!", Toast.LENGTH_SHORT).show();
+            }else{
+                dataoutput.setIsPaused(false);
+                dataoutput.setInitTime(System.currentTimeMillis());
+                dataoutput.updateOutputLine();
+                String outputLine = dataoutput.getOutputLine();
+                dataoutput.addFullFile(outputLine);
+                dataoutput.cleanOutputLine();
+                Toast.makeText(getApplicationContext(), "Saved!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Cat3Activity.this, "Analysis restarted!", Toast.LENGTH_SHORT).show();
+            }
+            setPauseColor();
+        }else{
+            Toast.makeText(getApplicationContext(), "Analysis must be launched first.", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void setPauseColor() {
+        if(dataoutput.isPaused()){
+            findViewById(R.id.btnPause).setBackgroundColor(Color.GREEN);
+            ( (Button) findViewById(R.id.btnPause) ).setText("PLAY");
+        }else{
+            findViewById(R.id.btnPause).setBackgroundColor(Color.RED);
+            ( (Button) findViewById(R.id.btnPause) ).setText("PAUSE");
+        }
+        if(!dataoutput.isRunning()){
+            findViewById(R.id.btnPause).setVisibility(View.GONE);
+        }else{
+            findViewById(R.id.btnPause).setVisibility(View.VISIBLE);
+        }
     }
 
     private void saveBtnState() {
@@ -178,7 +218,9 @@ public class Cat3Activity extends AppCompatActivity {
             editor.putBoolean("Cat3Elem" + i + "TBTN", datacattrois.getBtnElem(i));
             editor.putString("Cat3Elem" + i + "TextElem", datacattrois.getTextElem(i));
         }
-        editor.putString("AnalysisMemory", dataoutput.serialize(dataoutput.getFullFile()));   //tocheck
+        editor.putString("AnalysisMemory", dataoutput.serialize(dataoutput.getFullFile()));
+        editor.putBoolean("isPaused", dataoutput.isPaused());
+
         editor.commit();
     }
 

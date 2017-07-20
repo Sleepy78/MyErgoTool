@@ -205,10 +205,10 @@ public class ChooseActivity extends AppCompatActivity {
         //Change stop color depending on isRunning state
         if(dataoutput.isPaused()){
             findViewById(R.id.btnPause).setBackgroundColor(Color.GREEN);
-            ( (Button) findViewById(R.id.btnPause) ).setText("Continue analysis");
+            ( (Button) findViewById(R.id.btnPause) ).setText("PLAY");
         }else{
             findViewById(R.id.btnPause).setBackgroundColor(Color.RED);
-            ( (Button) findViewById(R.id.btnPause) ).setText("Pause");
+            ( (Button) findViewById(R.id.btnPause) ).setText("PAUSE");
         }
         if(!dataoutput.isRunning()){
             findViewById(R.id.btnPause).setVisibility(View.GONE);

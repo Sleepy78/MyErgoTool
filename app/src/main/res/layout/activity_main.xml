@@ -18,6 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
             android:onClick="onClickBtnStart"
             android:text="Start" />
 
@@ -26,6 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
             android:onClick="onClickBtnConf"
             android:text="Configuration" />
 
@@ -34,6 +38,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
             android:onClick="onClickBtnSend"
             android:text="Send" />
 
@@ -42,6 +48,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
             android:ems="10"
             android:hint="email"
             android:inputType="textEmailAddress" />
@@ -51,6 +59,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
             android:onClick="onClickBtnClean"
             android:text="Clean" />
 
