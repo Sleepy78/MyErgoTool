@@ -124,16 +124,13 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(DialogInterface dialog, int whichButton) {
                     cleanFile();
-                    datacatun.cleanDataCatUn();
-                    datacatdeux.cleanDataCatDeux();
-                    datacattrois.cleanDataCatTrois();
                 }
             });
             b.setNegativeButton("CANCEL", null);
             b.show();
-        }else{
-            Toast.makeText(getApplicationContext(), "Rien à nettoyer!", Toast.LENGTH_SHORT).show();
         }
+        cleanElements();
+        Toast.makeText(getApplicationContext(), "Cleaning OK !", Toast.LENGTH_SHORT).show();
     }
 
     private void savePreferences(){
@@ -225,12 +222,16 @@ public class MainActivity extends AppCompatActivity {
 
     private void cleanFile(){
         dataoutput.clean();
-
         getApplicationContext().deleteFile(filename);
         dataoutput.setIsSentable(false);
-        Toast.makeText(getApplicationContext(), "Cleaning OK", Toast.LENGTH_SHORT).show();
     }
 
+    private void cleanElements(){
+        datacatun.cleanDataCatUn();
+        datacatdeux.cleanDataCatDeux();
+        datacattrois.cleanDataCatTrois();
+    }
+    
     public void sendMail() {
         //File internalFile = getApplicationContext().getFileStreamPath(filename);
 
